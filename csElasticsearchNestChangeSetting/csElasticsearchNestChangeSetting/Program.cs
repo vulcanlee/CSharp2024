@@ -16,15 +16,23 @@ internal class Program
     static string IndexName = $"blog_setting";
     static async Task Main(string[] args)
     {
-        var settings = new ConnectionSettings(new Uri("http://10.1.1.231:9200/"))
+        var settings = new ConnectionSettings(new Uri("http://localhost:9200"))
             .DisableDirectStreaming()
             .BasicAuthentication("elastic", "elastic");
 
         var client = new ElasticClient(settings);
 
+        await Console.Out.WriteLineAsync($"生成索引");
         await MakeRandomIndex(client);
+        await Console.Out.WriteLineAsync($"取得索引設定");
         await GetIndexAllSetting(client);
+        await Console.Out.WriteLineAsync($"變大 Result Windows Size");
         await EnlargeResultSize(client);
+        await Console.Out.WriteLineAsync($"取得索引設定");
+        await GetIndexAllSetting(client);
+        await Console.Out.WriteLineAsync($"移除 Result Windows Size");
+        await RemoveResultSize(client);
+        await Console.Out.WriteLineAsync($"取得索引設定");
         await GetIndexAllSetting(client);
     }
 
@@ -46,13 +54,55 @@ internal class Program
         }
     }
 
+    static async Task RemoveResultSize(IElasticClient client)
+    {
+        await Console.Out.WriteLineAsync();
+
+        var getIndexSettingsResponse = await client.Indices
+            .GetSettingsAsync(IndexName);
+        var indexSettings = getIndexSettingsResponse
+            .Indices[IndexName].Settings;
+
+        indexSettings.Remove("index.max_result_window");
+        indexSettings.Remove("index.uuid");
+        indexSettings.Remove("index.creation_date");
+        indexSettings.Remove("index.version.created");
+        foreach (var setting in indexSettings)
+        {
+            Console.WriteLine($"{setting.Key}: {setting.Value}");
+        }
+
+
+        var updateIndexSettingsRequest =
+            new UpdateIndexSettingsRequest(IndexName);
+        IndexSettings indexSetting = new IndexSettings();
+        foreach (var setting in indexSettings)
+        {
+            indexSetting
+                .Add(setting.Key, setting.Value);
+        }
+        updateIndexSettingsRequest.IndexSettings = indexSetting;
+        var response = await client.Indices
+            .UpdateSettingsAsync(updateIndexSettingsRequest);
+
+        if (response.IsValid)
+        {
+            Console.WriteLine("Index settings updated successfully.");
+        }
+        else
+        {
+            Console.WriteLine($"Failed to update index settings: {response.DebugInformation}");
+        }
+        await Console.Out.WriteLineAsync();
+    }
+
     static async Task EnlargeResultSize(IElasticClient client)
     {
         await Console.Out.WriteLineAsync();
         // 更新索引的配置
         var response = await client.Indices.UpdateSettingsAsync(IndexName, uis => uis
             .IndexSettings(s => s
-        
+
                 .Setting("index.max_result_window", 200_000)
             )
         );
