@@ -1,0 +1,24 @@
+﻿<div class="view-all view-body">
+   <div className="wrapper">
+      <h1>待辦事項</h1>
+      <CreateForm addTodo={addTodo} />
+      {todos.map((todo) => {
+        return (
+        <TodoItemView todo={todo}
+            key={todo.id}
+            deleteTodo={deleteTodo}
+            toggleCompleted={toggleCompleted}
+            toggleIsEditing={toggleIsEditing}
+            editTodo={editTodo}
+          />
+        );
+      })}
+    </div></div>
+
+@code {
+    List<Todo> todos = new List<Todo>()
+    {
+        new Todo { Content = "打掃廁所", Id = Guid.NewGuid(), IsCompleted = false, IsEditing = false },
+        new Todo { Content = "寫作業", Id = Guid.NewGuid(), IsCompleted = true, IsEditing = false }
+    };
+}
