@@ -20,6 +20,13 @@ else
     [Parameter]
     public EventCallback<Guid> DeleteTodoCallback { get; set; }
 
+    override protected void OnInitialized()
+    {
+        if (TodoItem.IsCompleted)
+        {
+            completion = "completed";
+        }
+    }
     void ToggleCompleted(Guid id)
     {
         TodoItem.IsCompleted = !TodoItem.IsCompleted;
