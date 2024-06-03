@@ -1,0 +1,29 @@
+﻿<div class="view-all view-body">
+    <div class="wrapper">
+        <h1>待辦事項</h1>
+        <CreateForm AddTodoCallback="AddTodoHandle" />
+        @foreach (var todoItem in todos)
+        {
+            <Todo TodoItem="todoItem" DeleteTodoCallback="DeleteTodoHandle" />
+        }
+
+    </div>
+</div>
+
+@code {
+    List<TodoModel> todos = new List<TodoModel>()
+    {
+        new TodoModel { Content = "打掃廁所", Id = Guid.NewGuid(), IsCompleted = false, IsEditing = false },
+        new TodoModel { Content = "寫作業", Id = Guid.NewGuid(), IsCompleted = true, IsEditing = false }
+    };
+
+    private void AddTodoHandle(TodoModel todo)
+    {
+        todos.Add(todo);
+    }
+
+    private void DeleteTodoHandle(Guid id)
+    {
+        todos.RemoveAll(x => x.Id == id);
+    }
+}

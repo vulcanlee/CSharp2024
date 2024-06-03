@@ -1,6 +1,6 @@
 ﻿namespace csBlazorTodo.Models;
 
-public class Todo
+public class TodoModel
 {
     public string Content { get; set; }
     public Guid Id { get; set; }

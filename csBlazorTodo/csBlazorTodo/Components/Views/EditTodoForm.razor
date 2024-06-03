@@ -1,0 +1,17 @@
+﻿<div class="create-form">
+    <input type="text"
+           placeholder="輸入待辦事項"
+           @bind-value="TodoItem.Content" />
+    <button @onclick="HandleSubmit">完成</button>
+</div>
+@code {
+    [Parameter]
+    public TodoModel TodoItem { get; set; }
+    [Parameter]
+    public EventCallback<TodoModel> EditTodoCallback { get; set; }
+
+    void HandleSubmit()
+    {
+        EditTodoCallback.InvokeAsync(TodoItem);
+    }
+}

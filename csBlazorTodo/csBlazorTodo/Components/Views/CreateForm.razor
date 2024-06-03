@@ -1,5 +1,25 @@
-﻿<h3>CreateForm</h3>
+﻿<div class="create-form">
+    <input type="text"
+           placeholder="輸入待辦事項"
+           @bind-value="content"    />
+    <button type="submit" @onclick="Add">加入</button>
+</div>
 
 @code {
+    string content = "";
+    [Parameter]
+    public EventCallback<TodoModel> AddTodoCallback { get; set; }
 
+    private void Add(MouseEventArgs e)
+    {
+        TodoModel todo = new TodoModel
+        {
+            Content = content,
+            Id = Guid.NewGuid(),
+            IsCompleted = false,
+            IsEditing = false
+        };
+        AddTodoCallback.InvokeAsync(todo);
+        content = "";
+    }
 }

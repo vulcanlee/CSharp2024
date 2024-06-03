@@ -1,0 +1,41 @@
+﻿@if (TodoItem.IsEditing)
+{
+    <EditTodoForm TodoItem="TodoItem" EditTodoCallback="(s)=>EditTodoHandle(s)" />
+}
+else
+{
+    <div class="todo @completion ">
+        <div @onclick="()=>ToggleCompleted(TodoItem.Id)">@TodoItem.Content</div>
+        <div>
+            <span @onclick="()=>ToggleIsEditing(TodoItem.Id)" style="cursor:pointer">修改</span>
+            <span @onclick="()=>DeleteTodo(TodoItem.Id)" style="cursor:pointer;margin-left:5px">刪除</span>
+        </div>
+    </div>
+}
+@code {
+    [Parameter]
+    public TodoModel TodoItem { get; set; }
+    string completion = "";
+
+    [Parameter]
+    public EventCallback<Guid> DeleteTodoCallback { get; set; }
+
+    void ToggleCompleted(Guid id)
+    {
+        TodoItem.IsCompleted = !TodoItem.IsCompleted;
+        if (TodoItem.IsCompleted)
+        {
+            completion = "completed";
+        }
+        else
+        {
+            completion = "";
+        }
+    }
+
+    void EditTodoHandle(TodoModel todo) { TodoItem.IsEditing = !TodoItem.IsEditing; }
+
+    void ToggleIsEditing(Guid id) => TodoItem.IsEditing = !TodoItem.IsEditing;
+
+    void DeleteTodo(Guid id) => DeleteTodoCallback.InvokeAsync(id);
+}
