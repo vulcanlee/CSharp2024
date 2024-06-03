@@ -1,5 +1,5 @@
 ﻿<div class="view-all view-body">
-    <div class="wrapper">
+    <div class="wrapper my-5">
         <h1>待辦事項</h1>
         <CreateForm AddTodoCallback="AddTodoHandle" />
         @foreach (var todoItem in todos)
@@ -17,13 +17,7 @@
         new TodoModel { Content = "寫作業", Id = Guid.NewGuid(), IsCompleted = true, IsEditing = false }
     };
 
-    private void AddTodoHandle(TodoModel todo)
-    {
-        todos.Add(todo);
-    }
+    private void AddTodoHandle(TodoModel todo)=> todos.Add(todo);
 
-    private void DeleteTodoHandle(Guid id)
-    {
-        todos.RemoveAll(x => x.Id == id);
-    }
+    private void DeleteTodoHandle(Guid id)=> todos.RemoveAll(x => x.Id == id);
 }

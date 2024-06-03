@@ -4,41 +4,24 @@
 }
 else
 {
-    <div class="todo @completion ">
-        <div @onclick="()=>ToggleCompleted(TodoItem.Id)">@TodoItem.Content</div>
+    var completeClass = TodoItem.IsCompleted ? "completed" : "";
+    <div class="todo @completeClass" @onclick="()=>ToggleCompleted(TodoItem.Id)">
+        <div >@TodoItem.Content</div>
         <div>
             <span @onclick="()=>ToggleIsEditing(TodoItem.Id)" style="cursor:pointer">修改</span>
             <span @onclick="()=>DeleteTodo(TodoItem.Id)" style="cursor:pointer;margin-left:5px">刪除</span>
         </div>
     </div>
 }
+
 @code {
     [Parameter]
     public TodoModel TodoItem { get; set; }
-    string completion = "";
 
     [Parameter]
     public EventCallback<Guid> DeleteTodoCallback { get; set; }
 
-    override protected void OnInitialized()
-    {
-        if (TodoItem.IsCompleted)
-        {
-            completion = "completed";
-        }
-    }
-    void ToggleCompleted(Guid id)
-    {
-        TodoItem.IsCompleted = !TodoItem.IsCompleted;
-        if (TodoItem.IsCompleted)
-        {
-            completion = "completed";
-        }
-        else
-        {
-            completion = "";
-        }
-    }
+    void ToggleCompleted(Guid id)=> TodoItem.IsCompleted = !TodoItem.IsCompleted;
 
     void EditTodoHandle(TodoModel todo) { TodoItem.IsEditing = !TodoItem.IsEditing; }
 
