@@ -1,0 +1,28 @@
+﻿@page "/Auths/Logout"
+
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Cookies
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using csBlazorLogin.Components.Layout
+
+@layout EmptyLayout
+@inject ILogger<Login> Logger
+
+@inject NavigationManager NavigationManager
+
+<PageTitle>登出</PageTitle>
+
+@code {
+    string errorMessage = string.Empty;
+
+    [CascadingParameter]
+    private HttpContext HttpContext { get; set; } = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await HttpContext.SignOutAsync("CookieAuthenticationScheme");
+        NavigationManager.NavigateTo("/Auths/Login", forceLoad:true);
+    }
+}
