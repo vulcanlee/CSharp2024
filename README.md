@@ -5,7 +5,7 @@
 |csElasticsearchNestFindIndex|如何使用 C# / NEST 找到是否有匹配符合的 index 名稱||
 |csElasticsearchNestChangeSetting|Elasticsearch 系列 : 如何使用 C# / NEST 來變更 index.max_result_window 大小||
 |csBlazorTodo|使用 Blazor 設計 Todo 元件|https://reactsimpletodo.darenge.net/|
-||||
+|csBlazorSSR|.NET 8 Blazor 001 - 了解 SSR Static Server Render 運作模式||
 ||||
 ||||
 ||||
