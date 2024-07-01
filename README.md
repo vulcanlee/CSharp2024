@@ -10,7 +10,7 @@
 |csBlazorLogin|.NET 8 Blazor Server Interactive Cookie 登入||
 |mauiSettingConfiguration|||
 |mauiPrismNavigationEventWatch|觀察 MAIU for Prism 的導航事件觸發時機||
-||||
+|mauiMessengerCommunication|重複訂閱事件的問題修正做法||
 ||||
 ||||
 ||||
