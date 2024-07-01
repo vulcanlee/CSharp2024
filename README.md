@@ -6,10 +6,10 @@
 |csElasticsearchNestChangeSetting|Elasticsearch 系列 : 如何使用 C# / NEST 來變更 index.max_result_window 大小||
 |csBlazorTodo|使用 Blazor 設計 Todo 元件|https://reactsimpletodo.darenge.net/|
 |csBlazorSSR|.NET 8 Blazor 001 - 了解 SSR Static Server Render 運作模式||
-||||
-||||
-||||
-||||
+|csExceptionToString|將 Inner, Aggregation 等所有例外異常物件，轉成字串||
+|csBlazorLogin|.NET 8 Blazor Server Interactive Cookie 登入||
+|mauiSettingConfiguration|||
+|mauiPrismNavigationEventWatch|觀察 MAIU for Prism 的導航事件觸發時機||
 ||||
 ||||
 ||||

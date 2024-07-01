@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:mauiPrismNavigationEventCycle.ViewModels"
+             xmlns:model="clr-namespace:mauiPrismNavigationEventCycle.Models"
+             Title="系統日誌"
+             x:Class="mauiPrismNavigationEventCycle.Views.AllLogsPage"
+             x:DataType="viewModels:AllLogsPageViewModel">
+
+    <Grid>
+        <CollectionView ItemsSource="{Binding MessageItems}" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:MessageItem">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Message}"
+                               FontSize="16"
+                               LineBreakMode="WordWrap"
+                               Margin="20,10"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>
