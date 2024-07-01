@@ -17,6 +17,8 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
 
     [ObservableProperty]
     string text = "Click me";
+
+    public Action TurnOffSoftKeyboard;
     #endregion
 
     #region Constructor
@@ -32,7 +34,7 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
 
     void Tap()
     {
-        int foo = 1;
+        TurnOffSoftKeyboard?.Invoke();
     }
     [RelayCommand]
     private void Count()

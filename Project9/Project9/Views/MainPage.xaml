@@ -10,17 +10,17 @@
     <Grid>
         <ScrollView>
             <Grid>
-                <!--<Image Source="empty.png" Aspect="Fill"
+                <Image Source="empty.png" Aspect="Fill"
                HorizontalOptions="Fill" VerticalOptions="Fill">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding TapCommand}" />
                     </Image.GestureRecognizers>
-                </Image>-->
+                </Image>
 
                 <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
-            VerticalOptions="Center">
+            VerticalOptions="Fill">
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding TapCommand}" />
                     </VerticalStackLayout.GestureRecognizers>
@@ -34,12 +34,27 @@
              SemanticProperties.HeadingLevel="Level1"
              FontSize="32"
              HorizontalOptions="Center" />
+                    <Entry/>
+                    <Entry/>
 
+                    <Image Source="prism.png"
+             SemanticProperties.Description="Cute dot net bot waving hi to you!"
+             HeightRequest="150"
+             HorizontalOptions="Center" />
+                    <Image Source="prism.png"
+             SemanticProperties.Description="Cute dot net bot waving hi to you!"
+             HeightRequest="150"
+             HorizontalOptions="Center" />
+                    <Image Source="prism.png"
+             SemanticProperties.Description="Cute dot net bot waving hi to you!"
+             HeightRequest="150"
+             HorizontalOptions="Center" />
                     <Label Text="Welcome to Prism for .NET MAUI"
              SemanticProperties.HeadingLevel="Level2"
              SemanticProperties.Description="Welcome to Prism for dot net Multi platform App U I"
              FontSize="18"
              HorizontalOptions="Center" />
+                    <Entry/>
 
                     <Button Text="{Binding Text}"
               SemanticProperties.Hint="Counts the number of times you click"
