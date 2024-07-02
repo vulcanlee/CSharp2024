@@ -65,7 +65,7 @@ public partial class AllLogsPageViewModel : ObservableObject, INavigatedAware
 
     public void OnNavigatedTo(INavigationParameters parameters)
     {
-        var message = $"觸發 {this.GetType().Name} > {nameof(OnNavigatedFrom)} " +
+        var message = $"觸發 {this.GetType().Name} > {nameof(OnNavigatedTo)} " +
             $"(Action:{parameters.GetNavigationMode().ToString()})";
         currentLogSnapshotService.AddLog($"{message}", message =>
         {
