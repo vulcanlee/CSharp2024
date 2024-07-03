@@ -6,34 +6,41 @@
              xmlns:viewModel="clr-namespace:mauiAlertSnackbarToast.ViewModels"
              x:DataType="viewModel:MainPageViewModel">
 
-  <ScrollView>
-    <VerticalStackLayout
+    <ScrollView>
+        <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
 
-      <Image Source="prism.png"
+            <Image Source="prism.png"
              SemanticProperties.Description="Cute dot net bot waving hi to you!"
              HeightRequest="150"
              HorizontalOptions="Center" />
 
-      <Label Text="Hello, World!"
+            <Label Text="Hello, World!"
              SemanticProperties.HeadingLevel="Level1"
              FontSize="32"
              HorizontalOptions="Center" />
 
-      <Label Text="Welcome to Prism for .NET MAUI"
+            <Label Text="Welcome to Prism for .NET MAUI"
              SemanticProperties.HeadingLevel="Level2"
              SemanticProperties.Description="Welcome to Prism for dot net Multi platform App U I"
              FontSize="18"
              HorizontalOptions="Center" />
 
-      <Button Text="{Binding Text}"
+            <Button Text="{Binding Text}"
               SemanticProperties.Hint="Counts the number of times you click"
               Command="{Binding CountCommand}"
               HorizontalOptions="Center" />
 
-    </VerticalStackLayout>
-  </ScrollView>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button Text="Snakebar"
+                  Command="{Binding ShowSnakebarCommand}"/>
+                <Button Text="Toast"
+                  Command="{Binding ShowToastCommand}"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>

@@ -1,5 +1,8 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Threading;
+using CommunityToolkit.Maui.Alerts;
 
 namespace mauiAlertSnackbarToast.ViewModels;
 
@@ -28,6 +31,40 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
 
     #region Method Member
     #region Command Method
+    [RelayCommand]
+    async Task ShowSnakebar()
+    {
+        var snackbarOptions = new SnackbarOptions
+        {
+            BackgroundColor = Colors.Red,
+            TextColor = Colors.Green,
+            ActionButtonTextColor = Colors.Yellow,
+            CornerRadius = new CornerRadius(10),
+            Font = Microsoft.Maui.Font.SystemFontOfSize(14),
+            ActionButtonFont = Microsoft.Maui.Font.SystemFontOfSize(14),
+            CharacterSpacing = 0.5
+        };
+
+        string text = "This is a Snackbar" + $"({DateTime.Now})";
+        string actionButtonText = "Click Here to Dismiss";
+        TimeSpan duration = TimeSpan.FromSeconds(3);
+
+        var snackbar = Snackbar.Make(text, null, actionButtonText, duration, snackbarOptions);
+
+        await snackbar.Show();
+    }
+
+    [RelayCommand]
+    async Task ShowToast()
+    {
+        string text = "This is a Toast "+$"({DateTime.Now})";
+        ToastDuration duration = ToastDuration.Short;
+        double fontSize = 14;
+
+        var toast = Toast.Make(text, duration, fontSize);
+
+        await toast.Show();
+    }
     [RelayCommand]
     private void Count()
     {
