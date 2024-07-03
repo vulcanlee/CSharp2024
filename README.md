@@ -12,10 +12,10 @@
 |mauiPrismNavigationEventWatch|觀察 MAIU for Prism 的導航事件觸發時機||
 |mauiMessengerCommunication|重複訂閱事件的問題修正做法||
 |mauiSoftKeyboardVisibility|軟體鍵盤的隱藏控制||
-||||
-||||
-||||
-||||
+|mauiSwitchScreenAlwaysOn|螢幕持續恆亮||
+|mauiLockScreenPortrait|在iOS與Android裝置下，鎖定Portrait模式||
+|mauiSleepLifecycle|偵測 App 是否進入到背景或休眠模式下||
+|mauiAlertSnackbarToast|在 MAUI 使用警示功能 - Snackbar 與 快顯通知||
 ||||
 ||||
 ||||

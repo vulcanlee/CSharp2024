@@ -22,17 +22,6 @@ public partial class MainPage : ContentPage
     async void TurnOffKeyboard()
     {
         this.HideSoftInputOnTapped=true;
-        //await Task.Delay(300);
-        //this.HideSoftInputOnTapped = true;
-        //if (firstTime)
-        //{
-        //    await Task.Delay(300);
-        //    this.HideSoftInputOnTapped = false;
-        //    await Task.Delay(300);
-        //    this.HideSoftInputOnTapped = true;
-
-        //    firstTime = false;
-        //}
     }
 }
 
