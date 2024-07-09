@@ -16,8 +16,8 @@
 |mauiLockScreenPortrait|在iOS與Android裝置下，鎖定Portrait模式||
 |mauiSleepLifecycle|偵測 App 是否進入到背景或休眠模式下||
 |mauiAlertSnackbarToast|在 MAUI 使用警示功能 - Snackbar 與 快顯通知||
-||||
-||||
+|csSymmetricEncryption|使用對稱 Symmetric Encryption 進行資料加解密||
+|mauiExceptionToclipboard|MAUI 捕捉到無法預期例外異常，並將其寫入剪貼簿||
 ||||
 ||||
 ||||
