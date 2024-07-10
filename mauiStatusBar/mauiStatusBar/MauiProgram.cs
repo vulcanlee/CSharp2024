@@ -1,21 +1,15 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Prism.Ioc;
-using mauiExceptionToclipboard.ViewModels;
-using mauiExceptionToclipboard.Views;
+using mauiStatusBar.ViewModels;
+using mauiStatusBar.Views;
 
-namespace mauiExceptionToclipboard;
+namespace mauiStatusBar;
 
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
-        AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
-        {
-            var exceptionContext = e.ExceptionObject.ToString();
-            Clipboard.Default.SetTextAsync(exceptionContext).Wait();
-        };
-
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()

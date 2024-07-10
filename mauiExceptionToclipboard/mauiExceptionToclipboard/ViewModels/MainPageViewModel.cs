@@ -29,6 +29,46 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
     #region Method Member
     #region Command Method
     [RelayCommand]
+    async Task CleanClipboard()
+    {
+        await Clipboard.Default.SetTextAsync(null);
+    }
+    [RelayCommand]
+    void ThrowUnhandleException()
+    {
+        throw new Exception("喔喔，這裡發生例外異常");
+    }
+
+    [RelayCommand]
+    void ThrowUnhandleAggregateException()
+    {
+        var exceptions = new List<Exception>();
+
+        exceptions.Add(new ArgumentException("Argument Exception Message"));
+        exceptions.Add(new NullReferenceException("Null Reference Exception Message"));
+
+        throw new AggregateException("Aggregate Exception Message", exceptions);
+    }
+
+    [RelayCommand]
+    void ThrowUnhandleInnerException()
+    {
+        try
+        {
+            throw new Exception("喔喔，這裡發生例外異常");
+        }
+
+        catch (ArgumentException e)
+        {
+            //make sure this path does not exist
+            if (File.Exists("file://Bigsky//log.txt%22)%20==%20false") == false)
+            {
+                throw new FileNotFoundException("File Not found when trying to write argument exception to the file", e);
+            }
+        }
+    }
+
+    [RelayCommand]
     private void Count()
     {
         _count++;
