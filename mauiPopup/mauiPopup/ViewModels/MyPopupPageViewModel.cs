@@ -10,6 +10,13 @@ public partial class MyPopupPageViewModel : ObservableObject, INavigatedAware
     #endregion
 
     #region Property Member
+    public Action ClosePopupHandler { get; set; }
+    [ObservableProperty]
+    double width = 300;
+    [ObservableProperty]
+    double height = 300;
+    [ObservableProperty]
+    string message = "0";
     #endregion
 
     #region Constructor
@@ -34,6 +41,11 @@ public partial class MyPopupPageViewModel : ObservableObject, INavigatedAware
     #endregion
 
     #region Other Method
+    public void SetSize(double width, double height)
+    {
+        Width = width;
+        Height = height;
+    }
     #endregion
     #endregion
 }

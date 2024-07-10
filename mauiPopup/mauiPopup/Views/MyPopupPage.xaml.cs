@@ -9,6 +9,14 @@ public partial class MyPopupPage : Popup
     {
         InitializeComponent();
         BindingContext = viewModel;
+        viewModel.ClosePopupHandler = ClosePopup;
+    }
+
+    public void ClosePopup()
+    {
+        MyPopupPageViewModel viewModel = (MyPopupPageViewModel)BindingContext;
+        viewModel.ClosePopupHandler = null;
+        Close();
     }
 }
 
