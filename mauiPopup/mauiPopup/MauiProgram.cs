@@ -1,11 +1,10 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Prism.Ioc;
-using mauiStatusBar.ViewModels;
-using mauiStatusBar.Views;
-using System.Diagnostics;
+using mauiPopup.ViewModels;
+using mauiPopup.Views;
 
-namespace mauiStatusBar;
+namespace mauiPopup;
 
 public static class MauiProgram
 {
@@ -33,8 +32,6 @@ public static class MauiProgram
                          .NavigateAsync("NavigationPage/MainPage");
                          if (!result.Success)
                          {
-                             string msg = result.Exception.ToString();
-                             Debug.WriteLine(msg);
                              System.Diagnostics.Debugger.Break();
                          }
                      });

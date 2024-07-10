@@ -19,7 +19,7 @@
 |csSymmetricEncryption|使用對稱 Symmetric Encryption 進行資料加解密||
 |mauiExceptionToclipboard|MAUI 捕捉到無法預期例外異常，並將其寫入剪貼簿||
 |mauiStatusBar|設定狀態列的顏色||
-||||
+|mauiPopup|全螢幕彈出對話窗||
 ||||
 ||||
 ||||

@@ -2,17 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="{Binding Title}"
-             x:Class="mauiStatusBar.Views.MainPage"
-             xmlns:viewModel="clr-namespace:mauiStatusBar.ViewModels"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:DataType="viewModel:MainPageViewModel"
-             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-             ios:Page.UseSafeArea="True">
+             x:Class="mauiPopup.Views.MainPage"
+             xmlns:viewModel="clr-namespace:mauiPopup.ViewModels"
+             x:DataType="viewModel:MainPageViewModel">
 
-    <Page.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="Fuchsia" StatusBarStyle="LightContent" />
-    </Page.Behaviors>
-    
   <ScrollView>
     <VerticalStackLayout
             Spacing="25"
@@ -35,12 +28,15 @@
              FontSize="18"
              HorizontalOptions="Center" />
 
-      <Button Text="{Binding Text}"
+            <Button Text="{Binding Text}"
               SemanticProperties.Hint="Counts the number of times you click"
               Command="{Binding CountCommand}"
               HorizontalOptions="Center" />
 
-    </VerticalStackLayout>
+            <Button Text="test" Clicked="Button_Clicked"
+              HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
   </ScrollView>
 
 </ContentPage>
