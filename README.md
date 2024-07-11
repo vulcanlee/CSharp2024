@@ -22,7 +22,7 @@
 |mauiPopup|全螢幕彈出對話窗||
 |csAsymmetricEncryption|非對稱的加解密使用方式||
 |csDigitalSignature|內容數位簽名使用方式||
-||||
+|mauiNoNetworkConnection|無網路下發生的閃退||
 ||||
 ||||
 ||||
