@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using mauiPopup.Events;
 
 namespace mauiPopup.ViewModels;
 
@@ -28,6 +30,14 @@ public partial class MyPopupPageViewModel : ObservableObject, INavigatedAware
 
     #region Method Member
     #region Command Method
+    [RelayCommand]
+    void Close()
+    {
+        WeakReferenceMessenger.Default.Send<PopupEvent>(new PopupEvent()
+        {
+            Now = DateTime.Now
+        });
+    }
     #endregion
 
     #region Navigation Event

@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using mauiPopup.Events;
 using System.Diagnostics;
 
 namespace mauiPopup.ViewModels;
@@ -12,6 +14,7 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
     private readonly INavigationService navigationService;
     private readonly IPopupService popupService;
     MyPopupPageViewModel myPopupViewModel;
+    CancellationTokenSource cancellationTokenSource;
     #endregion
 
     #region Property Member
@@ -46,6 +49,7 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
             Text = "Clicked 1 time";
         else if (_count > 1)
             Text = $"Clicked {_count} times";
+
         popupService.ShowPopup<MyPopupPageViewModel>(onPresenting: viewmodel =>
         {
             myPopupViewModel = viewmodel;
@@ -56,10 +60,18 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
             viewmodel.SetSize(getWidth, getHeight);
         });
 
-        for (int i = 1; i <= 10; i++)
+        cancellationTokenSource = new CancellationTokenSource();
+        try
         {
-            await Task.Delay(1000);
-            myPopupViewModel.Message = i.ToString();
+            for (int i = 1; i <= 10; i++)
+            {
+                await Task.Delay(1000, cancellationTokenSource.Token);
+                myPopupViewModel.Message = i.ToString();
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"------------------------ {ex.ToString()}");
         }
 
         myPopupViewModel?.ClosePopupHandler?.Invoke();
@@ -70,11 +82,17 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
     public void OnNavigatedFrom(INavigationParameters parameters)
     {
         Debug.WriteLine("------------------------ OnNavigatedFrom");
+        WeakReferenceMessenger.Default.Unregister<PopupEvent>(this);
     }
 
     public void OnNavigatedTo(INavigationParameters parameters)
     {
         Debug.WriteLine("------------------------ OnNavigatedTo");
+        WeakReferenceMessenger.Default.Register<PopupEvent>(this, (sender, message) =>
+        {
+            Debug.WriteLine($"------------------------ PopupEvent: {message.Now}");
+            cancellationTokenSource.Cancel();
+        });
     }
     #endregion
 
