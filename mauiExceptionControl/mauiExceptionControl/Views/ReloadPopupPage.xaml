@@ -16,6 +16,8 @@
             <Rectangle HorizontalOptions="Fill" VerticalOptions="Fill"
                    Fill="LightGray" />
             <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <ActivityIndicator IsRunning="True" Color="Purple"
+                                   WidthRequest="70" HeightRequest="70"/>
                 <Label Text="{Binding Message}" FontSize="24" TextColor="Red"
                        LineBreakMode="WordWrap" Margin="30,0"
                        HorizontalTextAlignment="Center"
