@@ -10,8 +10,6 @@ public partial class SplashPageViewModel : ObservableObject, INavigatedAware
     #region Field Member
     private readonly INavigationService navigationService;
 
-    int failRetryTimes = 0;
-    int maxFailRetryTimes = 3;
     string endPoint = "https://wwwww.google.com";
     #endregion
 
@@ -55,7 +53,7 @@ public partial class SplashPageViewModel : ObservableObject, INavigatedAware
         IsShowProcess = true;
         IsShowError = false;
         ExceptionMessage = "";
-        endPoint = "https://wwwww.google.com";
+        endPoint = "https://www.google.com";
         await Initialization();
     }
     #endregion
@@ -72,7 +70,6 @@ public partial class SplashPageViewModel : ObservableObject, INavigatedAware
     }
     async Task Initialization()
     {
-        failRetryTimes++;
         int totalProcessItems = 100;
         for (var i = 1; i <= totalProcessItems; i++)
         {
@@ -80,32 +77,29 @@ public partial class SplashPageViewModel : ObservableObject, INavigatedAware
             ProcessText = $"{100.0 * i / totalProcessItems:0.#}%";
             await Task.Delay(100);
 
-            if (failRetryTimes < maxFailRetryTimes)
+            if (i == 65)
             {
-                if (i == 65)
+                try
                 {
-                    try
-                    {
-                        var foo = await new HttpClient().GetStringAsync("https://wwwww.google.com");
-                    }
-                    catch (Exception ex)
-                    {
-                        await Clipboard.Default.SetTextAsync(ex.ToString());
-                        ExceptionMessage = $"啟動發生問題 : {ex.Message}";
-                        IsShowProcess = false;
-                        IsShowError = true;
+                    var foo = await new HttpClient().GetStringAsync(endPoint);
+                }
+                catch (Exception ex)
+                {
+                    await Clipboard.Default.SetTextAsync(ex.ToString());
+                    ExceptionMessage = $"啟動發生問題 : {ex.Message}";
+                    IsShowProcess = false;
+                    IsShowError = true;
 
-                        #region Toast
-                        string text = "Toast : 請將剪貼簿內容，Email 給系統管理者 / " + $"({DateTime.Now})";
-                        ToastDuration duration = ToastDuration.Short;
-                        double fontSize = 14;
+                    #region Toast
+                    string text = "Toast : 請將剪貼簿內容，Email 給系統管理者 / " + $"({DateTime.Now})";
+                    ToastDuration duration = ToastDuration.Short;
+                    double fontSize = 14;
 
-                        var toast = Toast.Make(text, duration, fontSize);
+                    var toast = Toast.Make(text, duration, fontSize);
 
-                        await toast.Show();
-                        #endregion
-                        break;
-                    }
+                    await toast.Show();
+                    #endregion
+                    break;
                 }
             }
         }
