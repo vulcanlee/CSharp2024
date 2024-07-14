@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:mauiExceptionControl.ViewModels"
+             Title="首頁"
+             x:Class="mauiExceptionControl.Views.HomePage"
+             x:DataType="viewModels:HomePageViewModel">
+
+  <Grid>
+        <RefreshView Command="{Binding ReloadCommand}"
+                     IsRefreshing="{Binding Refreshing}">
+            <CollectionView ItemsSource="{Binding Items}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Label Text="{Binding .}" 
+                                   FontSize="24"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <Label Text="沒有發現到任何報告"
+               FontSize="32"
+               Margin="10,0"
+               TextColor="Red"
+             IsVisible="{Binding IsEmpty}"/>
+    </Grid>
+
+</ContentPage>

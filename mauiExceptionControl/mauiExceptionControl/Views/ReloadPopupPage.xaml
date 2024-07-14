@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModels="clr-namespace:mauiPopup.ViewModels"
+             xmlns:viewModels="clr-namespace:mauiExceptionControl.ViewModels"
+             x:Class="mauiExceptionControl.Views.ReloadPopupPage"
+             x:DataType="viewModels:ReloadPopupPageViewModel"
+             
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-               xmlns:popups="clr-namespace:mauiPopup.Views"
-             x:Class="mauiPopup.Views.MyPopupPage"
-             x:DataType="viewModels:MyPopupPageViewModel"
-              CanBeDismissedByTappingOutsideOfPopup="True"
-               Color="#88000000"
-               >
+             CanBeDismissedByTappingOutsideOfPopup="False"
+             Color="#88000000">
 
+    <Grid>
         <Grid HorizontalOptions="Center" VerticalOptions="Center"
               WidthRequest="300" HeightRequest="500"
             >
@@ -17,10 +17,11 @@
                    Fill="LightGray" />
             <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
                 <Label Text="{Binding Message}" FontSize="24" TextColor="Red"
+                       LineBreakMode="WordWrap" Margin="30,0"
+                       HorizontalTextAlignment="Center"
                    HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Button Text="Close" Command="{Binding CloseCommand}"
-                        HorizontalOptions="Center" VerticalOptions="Center"/>
             </VerticalStackLayout>
         </Grid>
+    </Grid>
 
 </toolkit:Popup>

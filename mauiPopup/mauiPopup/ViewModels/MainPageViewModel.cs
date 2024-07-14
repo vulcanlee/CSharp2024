@@ -57,7 +57,6 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
             DeviceDisplay.Current.MainDisplayInfo.Density;
             double getHeight = DeviceDisplay.Current.MainDisplayInfo.Height /
             DeviceDisplay.Current.MainDisplayInfo.Density;
-            viewmodel.SetSize(getWidth, getHeight);
         });
 
         cancellationTokenSource = new CancellationTokenSource();

@@ -23,7 +23,7 @@
 |csAsymmetricEncryption|非對稱的加解密使用方式||
 |csDigitalSignature|內容數位簽名使用方式||
 |mauiNoNetworkConnection|無網路下發生的閃退||
-||||
+|mauiExceptionControl|整體App遇到例外異常時候的處理作法||
 ||||
 ||||
 ||||

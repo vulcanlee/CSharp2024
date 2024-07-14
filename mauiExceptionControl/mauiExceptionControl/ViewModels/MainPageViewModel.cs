@@ -1,24 +1,26 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.Mvvm.Messaging;
-using mauiPopup.Events;
 
-namespace mauiPopup.ViewModels;
+namespace mauiExceptionControl.ViewModels;
 
-public partial class MyPopupPageViewModel : ObservableObject, INavigatedAware
+public partial class MainPageViewModel : ObservableObject, INavigatedAware
 {
     #region Field Member
+    private int _count;
     private readonly INavigationService navigationService;
+
     #endregion
 
     #region Property Member
-    public Action ClosePopupHandler { get; set; }
     [ObservableProperty]
-    string message = "0";
+    string title = "Main Page";
+
+    [ObservableProperty]
+    string text = "Click me";
     #endregion
 
     #region Constructor
-    public MyPopupPageViewModel(INavigationService navigationService)
+    public MainPageViewModel(INavigationService navigationService)
     {
         this.navigationService = navigationService;
     }
@@ -27,12 +29,13 @@ public partial class MyPopupPageViewModel : ObservableObject, INavigatedAware
     #region Method Member
     #region Command Method
     [RelayCommand]
-    void Close()
+    private void Count()
     {
-        WeakReferenceMessenger.Default.Send<PopupEvent>(new PopupEvent()
-        {
-            Now = DateTime.Now
-        });
+        _count++;
+        if (_count == 1)
+            Text = "Clicked 1 time";
+        else if (_count > 1)
+            Text = $"Clicked {_count} times";
     }
     #endregion
 

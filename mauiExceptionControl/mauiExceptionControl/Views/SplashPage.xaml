@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:mauiExceptionControl.ViewModels"
+             Title="Page Title"
+             x:Class="mauiExceptionControl.Views.SplashPage"
+             x:DataType="viewModels:SplashPageViewModel"
+             BackgroundColor="#E3F6FA">
+
+  <Grid>
+
+        <Grid
+            HorizontalOptions="Center" VerticalOptions="End"
+            Margin="0,0,0,100">
+
+            <Grid VerticalOptions="Center" IsVisible="{Binding IsShowProcess}">
+                <Border WidthRequest="{Binding ProcessWidth}"
+                        HeightRequest="40" HorizontalOptions="Start"
+                        BackgroundColor="#0E9CAB"
+                        >
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20"/>
+                    </Border.StrokeShape>
+                </Border>
+                <Border WidthRequest="{Binding CurrentProcessWidth}"
+                        HeightRequest="40" HorizontalOptions="Start"
+                        BackgroundColor="#FF9CAB"
+                        >
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20"/>
+                    </Border.StrokeShape>
+                </Border>
+                <Label Text="{Binding ProcessText}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="Black"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       />
+            </Grid>
+
+            <Grid VerticalOptions="Center" HorizontalOptions="Center"
+                  IsVisible="{Binding IsShowError}">
+                <VerticalStackLayout
+                    >
+                    <Label Text="{Binding ExceptionMessage}"
+                           Margin="30,0"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="Black"
+                           FontSize="20"
+                           LineBreakMode="TailTruncation"
+                           MaxLines="2"
+                           />
+                    <Button Text="重新啟動"
+                            Margin="10"
+                            Command="{Binding RetryCommand}"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            BackgroundColor="Red"
+                            TextColor="White"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            />
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+  </Grid>
+
+</ContentPage>
