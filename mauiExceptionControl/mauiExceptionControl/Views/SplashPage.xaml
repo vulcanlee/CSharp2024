@@ -52,16 +52,29 @@
                            LineBreakMode="TailTruncation"
                            MaxLines="2"
                            />
-                    <Button Text="重新啟動"
-                            Margin="10"
-                            Command="{Binding RetryCommand}"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            BackgroundColor="Red"
-                            TextColor="White"
-                            FontSize="20"
-                            FontAttributes="Bold"
-                            />
+                    <HorizontalStackLayout
+                        >
+                        <Button Text="重新啟動(錯誤URL)"
+                                Margin="10"
+                                Command="{Binding RetryFailUrlCommand}"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                BackgroundColor="Red"
+                                TextColor="White"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                />
+                        <Button Text="重新啟動"
+                                Margin="10"
+                                Command="{Binding RetryCommand}"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                BackgroundColor="Red"
+                                TextColor="White"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                />
+                    </HorizontalStackLayout>
                 </VerticalStackLayout>
             </Grid>
         </Grid>

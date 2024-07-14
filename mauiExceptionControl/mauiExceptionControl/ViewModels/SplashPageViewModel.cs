@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace mauiExceptionControl.ViewModels;
@@ -10,6 +12,7 @@ public partial class SplashPageViewModel : ObservableObject, INavigatedAware
 
     int failRetryTimes = 0;
     int maxFailRetryTimes = 3;
+    string endPoint = "https://wwwww.google.com";
     #endregion
 
     #region Property Member
@@ -38,11 +41,21 @@ public partial class SplashPageViewModel : ObservableObject, INavigatedAware
     #region Method Member
     #region Command Method
     [RelayCommand]
+    async Task RetryFailUrl()
+    {
+        IsShowProcess = true;
+        IsShowError = false;
+        ExceptionMessage = "";
+        endPoint = "https://wwwww.google.com";
+        await Initialization();
+    }
+    [RelayCommand]
     async Task Retry()
     {
         IsShowProcess = true;
         IsShowError = false;
         ExceptionMessage = "";
+        endPoint = "https://wwwww.google.com";
         await Initialization();
     }
     #endregion
@@ -55,7 +68,7 @@ public partial class SplashPageViewModel : ObservableObject, INavigatedAware
     public async void OnNavigatedTo(INavigationParameters parameters)
     {
         await Initialization();
-        
+
     }
     async Task Initialization()
     {
@@ -67,19 +80,37 @@ public partial class SplashPageViewModel : ObservableObject, INavigatedAware
             ProcessText = $"{100.0 * i / totalProcessItems:0.#}%";
             await Task.Delay(100);
 
-            if (failRetryTimes< maxFailRetryTimes)
+            if (failRetryTimes < maxFailRetryTimes)
             {
                 if (i == 65)
                 {
-                    ExceptionMessage = "An error occurred while initializing the application 初始化應用程式時發生錯誤";
-                    IsShowProcess = false;
-                    IsShowError = true;
-                    break;
+                    try
+                    {
+                        var foo = await new HttpClient().GetStringAsync("https://wwwww.google.com");
+                    }
+                    catch (Exception ex)
+                    {
+                        await Clipboard.Default.SetTextAsync(ex.ToString());
+                        ExceptionMessage = $"啟動發生問題 : {ex.Message}";
+                        IsShowProcess = false;
+                        IsShowError = true;
+
+                        #region Toast
+                        string text = "Toast : 請將剪貼簿內容，Email 給系統管理者 / " + $"({DateTime.Now})";
+                        ToastDuration duration = ToastDuration.Short;
+                        double fontSize = 14;
+
+                        var toast = Toast.Make(text, duration, fontSize);
+
+                        await toast.Show();
+                        #endregion
+                        break;
+                    }
                 }
             }
         }
 
-        if(IsShowError == false)
+        if (IsShowError == false)
         {
             await navigationService.NavigateAsync("/NavigationPage/HomePage");
         }

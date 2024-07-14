@@ -6,7 +6,14 @@
              x:Class="mauiExceptionControl.Views.HomePage"
              x:DataType="viewModels:HomePageViewModel">
 
-  <Grid>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="正確URL"
+                     Command="{Binding SetCorrectUrlCommand}"/>
+        <ToolbarItem Text="錯誤URL"
+                     Command="{Binding SetIncorrectUrlCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
         <RefreshView Command="{Binding ReloadCommand}"
                      IsRefreshing="{Binding Refreshing}">
             <CollectionView ItemsSource="{Binding Items}">
@@ -27,4 +34,4 @@
              IsVisible="{Binding IsEmpty}"/>
     </Grid>
 
-</ContentPage>
+    </ContentPage>
