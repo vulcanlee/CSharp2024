@@ -4,7 +4,7 @@
 
 不過，這個控制項無法顯示當時進度文字，因此，這裡展示可以動態更新進度與文字的進度條設計方法。
 
-# Popup
+# Popup 
 
 [彈出視窗](https://learn.microsoft.com/zh-tw/dotnet/communitytoolkit/maui/views/popup)是一種非常常見的方式，將信息呈現給與目前工作相關的使用者。 操作系統提供顯示訊息並要求用戶回應的方式，這些警示通常限制開發人員可以提供的內容，以及版面配置和外觀。
 
