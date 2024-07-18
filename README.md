@@ -84,8 +84,6 @@
 ||||
 ||||
 ||||
-|1|變更應用程式狀態列 Status Bar 的顏色|使用 .NET MAUI Community Toolkit|
-||修正 Android 平台下的 Entry 控制項將不會有底線的效果||
 ||||
 ||||
 ||||
@@ -184,4 +182,19 @@
 ||||
 ||||
 ||||
-||||
+
+iOS Simulator: A fatal error occurred while trying to start the server.
+
+xcrun simctl shutdown all
+
+rm -r ~/Library/Developer/CoreSimulator/Caches
+
+sudo rm -R /Users/swee/Library/Developer/CoreSimulator/Caches
+
+open -a Simulator
+
+cat /Library/Logs/CoreSimulator/CoreSimulator.log
+
+On macOS 13 and above
+Go to System Settings → General → Storage → Developer
+Delete "Developer Caches"

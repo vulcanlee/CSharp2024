@@ -1,14 +1,17 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.Logging;
+using System.Collections.ObjectModel;
 
 namespace mauiSleepLifecycle.ViewModels;
 
-public partial class MainPageViewModel : ObservableObject, INavigatedAware
+public partial class MainPageViewModel : ObservableObject, INavigatedAware, IApplicationLifecycleAware
 {
     #region Field Member
     private int _count;
     private readonly INavigationService navigationService;
-
+    private readonly ILogger<MainPageViewModel> logger;
+    CancellationTokenSource cts;
     #endregion
 
     #region Property Member
@@ -17,12 +20,19 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
 
     [ObservableProperty]
     string text = "Click me";
+
+    [ObservableProperty]
+    ObservableCollection<string> items = new ObservableCollection<string>();
+
+    List<string> executionLogs = new List<string>();
     #endregion
 
     #region Constructor
-    public MainPageViewModel(INavigationService navigationService)
+    public MainPageViewModel(INavigationService navigationService,
+        ILogger<MainPageViewModel> logger)
     {
         this.navigationService = navigationService;
+        this.logger = logger;
     }
     #endregion
 
@@ -46,6 +56,36 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
 
     public void OnNavigatedTo(INavigationParameters parameters)
     {
+    }
+
+    public void OnResume()
+    {
+        cts?.Cancel();
+        executionLogs.Insert(0, $"Resume : {DateTime.Now.ToString()}");
+        logger.LogInformation($"Resume : {DateTime.Now.ToString()}");
+        Items.Clear();
+        foreach (var log in executionLogs)
+        {
+            Items.Add(log);
+        }
+    }
+
+    public async void OnSleep()
+    {
+        executionLogs.Clear();
+        cts = new CancellationTokenSource();
+        try
+        {
+            while (!cts.IsCancellationRequested)
+            {
+                executionLogs.Insert(0, $"Sleep : {DateTime.Now.ToString()}");
+                logger.LogInformation($"Sleep : {DateTime.Now.ToString()}");
+                await Task.Delay(500, cts.Token);
+            }
+        }
+        catch (Exception)
+        {
+        }
     }
     #endregion
 
