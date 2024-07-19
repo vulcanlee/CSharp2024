@@ -16,7 +16,7 @@ internal class Program
     static string IndexName = $"blog_setting";
     static async Task Main(string[] args)
     {
-        var settings = new ConnectionSettings(new Uri("http://localhost:9200"))
+        var settings = new ConnectionSettings(new Uri("http://10.1.1.231:9200"))
             .DisableDirectStreaming()
             .BasicAuthentication("elastic", "elastic");
 
@@ -57,34 +57,13 @@ internal class Program
     static async Task RemoveResultSize(IElasticClient client)
     {
         await Console.Out.WriteLineAsync();
+        // 更新索引的配置
+        var response = await client.Indices.UpdateSettingsAsync(IndexName, uis => uis
+            .IndexSettings(s => s
 
-        var getIndexSettingsResponse = await client.Indices
-            .GetSettingsAsync(IndexName);
-        var indexSettings = getIndexSettingsResponse
-            .Indices[IndexName].Settings;
-
-        indexSettings.Remove("index.max_result_window");
-        indexSettings.Remove("index.uuid");
-        indexSettings.Remove("index.creation_date");
-        indexSettings.Remove("index.version.created");
-        foreach (var setting in indexSettings)
-        {
-            Console.WriteLine($"{setting.Key}: {setting.Value}");
-        }
-
-
-        var updateIndexSettingsRequest =
-            new UpdateIndexSettingsRequest(IndexName);
-        IndexSettings indexSetting = new IndexSettings();
-        foreach (var setting in indexSettings)
-        {
-            indexSetting
-                .Add(setting.Key, setting.Value);
-        }
-        updateIndexSettingsRequest.IndexSettings = indexSetting;
-        var response = await client.Indices
-            .UpdateSettingsAsync(updateIndexSettingsRequest);
-
+                .Setting("index.max_result_window", 10_000)
+            )
+        );
         if (response.IsValid)
         {
             Console.WriteLine("Index settings updated successfully.");

@@ -3,7 +3,7 @@
 |專案名稱|專案說明|備註|
 |-|-|-|
 |* csElasticsearchNestFindIndex|如何使用 C# / NEST 找到是否有匹配符合的 index 名稱||
-|csElasticsearchNestChangeSetting|Elasticsearch 系列 : 如何使用 C# / NEST 來變更 index.max_result_window 大小||
+|* csElasticsearchNestChangeSetting|Elasticsearch 系列 : 如何使用 C# / NEST 來變更 index.max_result_window 大小||
 |csBlazorTodo|使用 Blazor 設計 Todo 元件|https://reactsimpletodo.darenge.net/|
 |* csBlazorSSR|.NET 8 Blazor 001 - 了解 SSR Static Server Render 運作模式||
 |csExceptionToString|將 Inner, Aggregation 等所有例外異常物件，轉成字串||
@@ -24,7 +24,7 @@
 |csDigitalSignature|內容數位簽名使用方式||
 |mauiNoNetworkConnection|無網路下發生的閃退||
 |mauiExceptionControl|整體App遇到例外異常時候的處理作法||
-|csConfigurationRunTimeChange|在執行時期能夠取得 appsettings.json 變更後的內容值||
+|* csConfigurationRunTimeChange|在執行時期能夠取得 appsettings.json 變更後的內容值||
 ||||
 ||||
 ||||
