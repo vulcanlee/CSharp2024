@@ -24,7 +24,7 @@
 |csDigitalSignature|內容數位簽名使用方式||
 |mauiNoNetworkConnection|無網路下發生的閃退||
 |mauiExceptionControl|整體App遇到例外異常時候的處理作法||
-||||
+|csConfigurationRunTimeChange|在執行時期能夠取得 appsettings.json 變更後的內容值||
 ||||
 ||||
 ||||
