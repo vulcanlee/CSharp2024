@@ -20,6 +20,7 @@
 |mauiExceptionToclipboard|MAUI 捕捉到無法預期例外異常，並將其寫入剪貼簿||
 |mauiStatusBar|設定狀態列的顏色||
 |mauiPopup|全螢幕彈出對話窗||
+|* csSymmetricEncryption|.NET 8 / C# 對稱式 AES 加解密使用教學||
 |csAsymmetricEncryption|非對稱的加解密使用方式||
 |csDigitalSignature|內容數位簽名使用方式||
 |mauiNoNetworkConnection|無網路下發生的閃退||

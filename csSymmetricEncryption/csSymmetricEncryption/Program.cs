@@ -15,16 +15,27 @@ internal class Program
         Console.WriteLine($"Jim 加密後的密文文字 : {cipherText}");
         string decryptedText = JimBobConversion.Decrypt(cipherText);
         Console.WriteLine($"Bob 解密後的明碼文字 : {decryptedText}");
-        Console.WriteLine();Console.WriteLine();
+        Console.WriteLine(); Console.WriteLine();
 
-        SymmetricEncryption JimHelenConversion = new SymmetricEncryption("NoejdzdvThHy7GzxnAZVcV+/GQrBG7y9wnSh0h5d7zA=");
-        Console.WriteLine($"此次使用的加解密金鑰 : {JimHelenConversion.Key}");
+        plainText = "What happened to you?  你怎麼了? 123";
+        Console.WriteLine($"Jim 準備要送出的未加密明碼文字 : {plainText}");
+        cipherText = JimBobConversion.Encrypt(plainText);
+        Console.WriteLine($"Jim 加密後的密文文字 : {cipherText}");
+        decryptedText = JimBobConversion.Decrypt(cipherText);
+        Console.WriteLine($"Helen 解密後的明碼文字 : {decryptedText}");
+        Console.WriteLine(); Console.WriteLine();
+
+        SymmetricEncryption JimBobNewConversion = 
+            new SymmetricEncryption("這裡指定需要使用的加解密金鑰 Key。代表抽象基底類別，進階加密標準 (AES) 的所有實作都必須從它繼承。");
+        Console.WriteLine($"此次使用的加解密金鑰 : {JimBobNewConversion.Key}");
         plainText = "Hello, World!";
         Console.WriteLine($"Jim 準備要送出的未加密明碼文字 : {plainText}");
-        cipherText = JimHelenConversion.Encrypt(plainText);
+        cipherText = JimBobNewConversion.Encrypt(plainText);
         Console.WriteLine($"Jim 加密後的密文文字 : {cipherText}");
-        decryptedText = JimHelenConversion.Decrypt(cipherText);
-        Console.WriteLine($"Helen 解密後的明碼文字 : {decryptedText}");
+        decryptedText = JimBobNewConversion.Decrypt(cipherText);
+        Console.WriteLine($"Bob 解密後的明碼文字 : {decryptedText}");
+        Console.WriteLine(); Console.WriteLine();
+
     }
 }
 
@@ -39,11 +50,14 @@ class SymmetricEncryption
             this.Key = Convert.ToBase64String(aesAlgorithm.Key);
         }
     }
+
     public SymmetricEncryption(string key)
     {
-        this.Key = key;
+        byte[] sourceBytes = Encoding.UTF8.GetBytes(key).ToArray().Take(32).ToArray();
+        this.Key = Convert.ToBase64String(sourceBytes);
     }
-    public string Key { get; set; } = "這裡指定需要使用的加解密金鑰 Key";
+
+    public string Key { get; set; } = "";
 
     public string Encrypt(string plainText)
     {
