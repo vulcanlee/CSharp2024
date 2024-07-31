@@ -12,48 +12,52 @@ internal class Program
         RSA jimRsa = rsaTool.GenerateKeys();
         string jimPublicKey = rsaTool.GetPublicKey(jimRsa);
         string jimPrivateKey = rsaTool.GetPrivateKey(jimRsa);
+        Console.WriteLine($"Jim Public Key : {jimPublicKey}");
+        Console.WriteLine($"");
+        Console.WriteLine($"Jim Private Key : {jimPrivateKey}");
+        Console.WriteLine($""); Console.WriteLine($"");
 
-        Console.WriteLine("Generating keys for Tom...");
-        RSA tomRsa = rsaTool.GenerateKeys();
-        string tomPublicKey = rsaTool.GetPublicKey(tomRsa);
-        string tomPrivateKey = rsaTool.GetPrivateKey(tomRsa);
+        Console.WriteLine("Generating keys for Bob...");
+        RSA BobRsa = rsaTool.GenerateKeys();
+        string BobPublicKey = rsaTool.GetPublicKey(BobRsa);
+        string BobPrivateKey = rsaTool.GetPrivateKey(BobRsa);
+        Console.WriteLine($"Bob Public Key : {BobPublicKey}");
+        Console.WriteLine($"");
+        Console.WriteLine($"Bob Private Key : {BobPrivateKey}");
+        Console.WriteLine($""); Console.WriteLine($"");
 
-        while (true)
-        {
-            Console.WriteLine("\nChoose an option:");
-            Console.WriteLine("1. Jim sends an encrypted message to Tom");
-            Console.WriteLine("2. Tom sends an encrypted message to Jim");
-            Console.WriteLine("3. Exit");
 
-            string choice = Console.ReadLine();
 
-            switch (choice)
-            {
-                case "1":
-                    Console.Write("Jim, enter your message: ");
-                    string jimMessage = Console.ReadLine();
-                    string encryptedForTom = rsaTool.Encrypt(tomPublicKey, jimMessage);
-                    Console.WriteLine("Encrypted message: " + encryptedForTom);
-                    Console.WriteLine("Tom decrypts the message:");
-                    string decryptedByTom = rsaTool.Decrypt(tomPrivateKey, encryptedForTom);
-                    Console.WriteLine("Decrypted message: " + decryptedByTom);
-                    break;
-                case "2":
-                    Console.Write("Tom, enter your message: ");
-                    string tomMessage = Console.ReadLine();
-                    string encryptedForJim = rsaTool.Encrypt(jimPublicKey, tomMessage);
-                    Console.WriteLine("Encrypted message: " + encryptedForJim);
-                    Console.WriteLine("Jim decrypts the message:");
-                    string decryptedByJim = rsaTool.Decrypt(jimPrivateKey, encryptedForJim);
-                    Console.WriteLine("Decrypted message: " + decryptedByJim);
-                    break;
-                case "3":
-                    return;
-                default:
-                    Console.WriteLine("Invalid option. Please try again.");
-                    break;
-            }
-        }
+        string plainText = "Hello, World!";
+        Console.WriteLine($"Jim 準備要送出的未加密明碼文字 : {plainText}");
+        string encryptedForBob = rsaTool.Encrypt(BobPublicKey, plainText);
+        Console.WriteLine($"Jim 使用 Bob 公開金鑰 加密後的密文文字 : {encryptedForBob}");
+
+        string decryptedByBob = rsaTool.Decrypt(BobPrivateKey, encryptedForBob);
+        Console.WriteLine($"Bob 使用自己私鑰 進行解密後的明碼文字 : {decryptedByBob}");
+        Console.WriteLine($""); Console.WriteLine($"");
+
+
+
+        plainText = "Hello, World!";
+        Console.WriteLine($"Bob 準備要送出的未加密明碼文字 : {plainText}");
+        string encryptedForJim = rsaTool.Encrypt(jimPublicKey, plainText);
+        Console.WriteLine($"Bob 使用 Jim 公開金鑰 加密後的密文文字 : {encryptedForJim}");
+
+        string decryptedByJim = rsaTool.Decrypt(jimPrivateKey, encryptedForJim);
+        Console.WriteLine($"Jim 使用自己私鑰 進行解密後的明碼文字 : {decryptedByJim}");
+        Console.WriteLine($""); Console.WriteLine($"");
+
+
+
+        plainText = "What happened to you?  你怎麼了? 123!";
+        Console.WriteLine($"Bob 準備要送出的未加密明碼文字 : {plainText}");
+        encryptedForJim = rsaTool.Encrypt(jimPublicKey, plainText);
+        Console.WriteLine($"Bob 使用 Jim 公開金鑰 加密後的密文文字 : {encryptedForJim}");
+
+        decryptedByJim = rsaTool.Decrypt(jimPrivateKey, encryptedForJim);
+        Console.WriteLine($"Jim 使用自己私鑰 進行解密後的明碼文字 : {decryptedByJim}");
+        Console.WriteLine($""); Console.WriteLine($"");
     }
 }
 
