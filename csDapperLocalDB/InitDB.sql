@@ -1,0 +1,9 @@
+CREATE DATABASE DapperDemo;
+
+USE DapperDemo;
+
+CREATE TABLE Users (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(50),
+    Email NVARCHAR(50)
+);

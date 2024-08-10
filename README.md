@@ -28,7 +28,7 @@
 |* csConfigurationRunTimeChange|在執行時期能夠取得 appsettings.json 變更後的內容值||
 |csUseExceptionHandlerCustom|使用 UseExceptionHandler 來設計一個例外異常處理頁面||
 |csAspNetCoreTemplate|各種 ASP.NET Core 專案範本之間的差異比較||
-||||
+|csDapperLocalDB|使用 Dapper 對 LocalDB 進行資料庫存取||
 ||||
 ||||
 ||||

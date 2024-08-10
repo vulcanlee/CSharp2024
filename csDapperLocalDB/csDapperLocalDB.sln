@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csDapperLocalDB", "csDapperLocalDB\csDapperLocalDB.csproj", "{D65FBA72-E258-47BD-97A4-47D2E2006327}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D65FBA72-E258-47BD-97A4-47D2E2006327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D65FBA72-E258-47BD-97A4-47D2E2006327}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D65FBA72-E258-47BD-97A4-47D2E2006327}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D65FBA72-E258-47BD-97A4-47D2E2006327}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE12A941-59BB-47EC-BC31-1ED953E4141D}
+	EndGlobalSection
+EndGlobal
