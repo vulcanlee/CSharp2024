@@ -1,0 +1,2 @@
+ALTER TABLE Users
+ADD AdditionalData NVARCHAR(MAX);
