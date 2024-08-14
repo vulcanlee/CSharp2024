@@ -4,10 +4,23 @@ namespace csLimitThread;
 
 internal class Program
 {
-    static SemaphoreSlim semaphore = new SemaphoreSlim(100);
+    static SemaphoreSlim semaphore = new SemaphoreSlim(100, 100);
     static async Task Main(string[] args)
     {
-        ThreadPool.SetMinThreads(105, 105);
+        List<string> usedThreadNumber = new List<string>();
+        CancellationTokenSource cts = new CancellationTokenSource();
+        new Thread(() =>
+        {
+            while (cts.IsCancellationRequested == false)
+            {
+                usedThreadNumber.Insert(0, $"{DateTime.Now} " +
+                    $"{Process.GetCurrentProcess().Threads.Count} / {ThreadPool.ThreadCount}");
+                usedThreadNumber = usedThreadNumber.Take(1000).ToList();
+                Thread.Sleep(100);
+            }
+
+        }).Start();
+        ThreadPool.SetMinThreads(100, 100);
         var allItmes = Enumerable.Range(0, 1000);
         Stopwatch stopwatch = new Stopwatch();
         stopwatch.Start();
@@ -15,11 +28,12 @@ internal class Program
         {
             await semaphore.WaitAsync();
             Console.Write("*");
-            ThreadPool.QueueUserWorkItem(async (state) =>
+            ThreadPool.QueueUserWorkItem((state) =>
             {
                 try
                 {
-                    await Task.Delay(3000);
+                    Console.Write("+");
+                    Thread.Sleep(3000);
                 }
                 finally
                 {
@@ -29,7 +43,12 @@ internal class Program
             });
         }
         stopwatch.Stop();
+        cts.Cancel();
         Console.WriteLine();
         Console.WriteLine($"Time elapsed: {stopwatch.Elapsed}");
+        foreach (var item in usedThreadNumber)
+        {
+            Console.WriteLine(item);
+        }
     }
 }
