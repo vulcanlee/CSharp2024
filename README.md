@@ -33,7 +33,7 @@
 |csLimitThread|限制執行緒使用數量||
 |csJsonMerge|合併兩個 JSON 物件||
 |csAlwaysNewThread|使用新執行緒，而不是透過執行緒集區執行緒完成非同步工作||
-||||
+|csSemaphoreSlimExcessiveRelease|明確控制最大並發數||
 ||||
 ||||
 ||||
