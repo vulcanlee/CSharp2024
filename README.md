@@ -34,7 +34,7 @@
 |csJsonMerge|合併兩個 JSON 物件||
 |csAlwaysNewThread|使用新執行緒，而不是透過執行緒集區執行緒完成非同步工作||
 |csSemaphoreSlimExcessiveRelease|明確控制最大並發數||
-||||
+|csReadExcelSyncfusion|使用 Syncfusion 套件讀取 Excel 檔案內容||
 ||||
 ||||
 ||||
