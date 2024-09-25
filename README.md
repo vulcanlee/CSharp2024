@@ -36,7 +36,7 @@
 |csSemaphoreSlimExcessiveRelease|明確控制最大並發數||
 |csReadExcelSyncfusion|使用 Syncfusion 套件讀取 Excel 檔案內容||
 |csAzureAIOpenAIQuickStart|第一次使用 Azure.AI.OpenAI 2.0.0-beta.6 開發教學||
-||||
+|csAzureAIOpenAIHelper|設計 Azure.AI.OpenAI 支援類別，簡化設計過程||
 ||||
 ||||
 ||||
