@@ -38,6 +38,7 @@
 |csAzureAIOpenAIQuickStart|第一次使用 Azure.AI.OpenAI 2.0.0-beta.6 開發教學||
 |csAzureAIOpenAIHelper|設計 Azure.AI.OpenAI 支援類別，簡化設計過程||
 |*csBlazorInteractiveSSR|.NET 8 Blazor 002 - 了解 互動式伺服器端轉譯 Interactive server-side rendering (interactive SSR) 運作模式||
+|*csBlazorCSR|.NET 8 Blazor 003 - 了解 互動式 WebAssembly 用戶端端轉譯 Client-side rendering (CSR) 運作模式||
 ||||
 ||||
 ||||
