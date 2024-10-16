@@ -35,12 +35,12 @@
 |csAlwaysNewThread|使用新執行緒，而不是透過執行緒集區執行緒完成非同步工作||
 |csSemaphoreSlimExcessiveRelease|明確控制最大並發數||
 |csReadExcelSyncfusion|使用 Syncfusion 套件讀取 Excel 檔案內容||
-|csAzureAIOpenAIQuickStart|第一次使用 Azure.AI.OpenAI 2.0.0-beta.6 開發教學||
+|*csAzureAIOpenAIQuickStart|第一次使用 Azure.AI.OpenAI 2.0.0 開發教學||
 |csAzureAIOpenAIHelper|設計 Azure.AI.OpenAI 支援類別，簡化設計過程||
 |*csBlazorInteractiveSSR|.NET 8 Blazor 002 - 了解 互動式伺服器端轉譯 Interactive server-side rendering (interactive SSR) 運作模式||
 |*csBlazorCSR|.NET 8 Blazor 003 - 了解 互動式 WebAssembly 用戶端端轉譯 Client-side rendering (CSR) 運作模式||
-|csBlazorGlobal|.NET 8 Blazor 004 - 觀察 Global 與 Per Page/Component 之間的差異||
-||||
+|*csBlazorGlobal|.NET 8 Blazor 004 - 觀察 Global 與 Per Page/Component 之間的差異||
+|csAzureOpenAIRole|指定不同的角色 (Role) 來提升模型的行為控制和回應精確度||
 ||||
 ||||
 ||||
