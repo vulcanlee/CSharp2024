@@ -40,7 +40,8 @@
 |*csBlazorInteractiveSSR|.NET 8 Blazor 002 - 了解 互動式伺服器端轉譯 Interactive server-side rendering (interactive SSR) 運作模式||
 |*csBlazorCSR|.NET 8 Blazor 003 - 了解 互動式 WebAssembly 用戶端端轉譯 Client-side rendering (CSR) 運作模式||
 |*csBlazorGlobal|.NET 8 Blazor 004 - 觀察 Global 與 Per Page/Component 之間的差異||
-|csAzureOpenAIRole|指定不同的角色 (Role) 來提升模型的行為控制和回應精確度||
+|csAzureOpenAIRole|Azure.AI.OpenAI 指定不同的角色 (Role) 來提升模型的行為控制和回應精確度||
+|csZeroOneFewShot|Azure.AI.OpenAI 零範例學習 單範例學習 少範例學習||
 ||||
 ||||
 ||||
