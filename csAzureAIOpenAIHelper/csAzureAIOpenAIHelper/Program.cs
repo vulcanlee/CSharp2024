@@ -21,7 +21,7 @@ public class AzureOpenAIClientFactory
         // 使用 API Key 建立 AzureOpenAIClient 物件
         AzureOpenAIClient azureClient = new(
             new Uri(endPoint),
-            new AzureKeyCredential(apiKey));
+            new System.ClientModel.ApiKeyCredential(apiKey));
         return azureClient;
     }
 
@@ -47,7 +47,10 @@ internal class Program
         Console.WriteLine($"{DateTime.Now}  [User]: {userPrompt}");
         ChatCompletion completion = chatClient.CompleteChat("Say 'this is a test.'");
 
-        Console.WriteLine($"{DateTime.Now}  [ASSISTANT]: {completion}");
+        foreach (var content in completion.Content)
+        {
+            Console.WriteLine($"{DateTime.Now}  [ASSISTANT]: {content.Text}");
+        }
 
         Console.WriteLine(Environment.NewLine);
         Console.WriteLine(Environment.NewLine);
@@ -59,6 +62,9 @@ internal class Program
 
         completion = chatClient.CompleteChat(userPrompt);
 
-        Console.WriteLine($"{DateTime.Now}  [ASSISTANT]: {completion}");
+        foreach (var content in completion.Content)
+        {
+            Console.WriteLine($"{DateTime.Now}  [ASSISTANT]: {content.Text}");
+        }
     }
 }
