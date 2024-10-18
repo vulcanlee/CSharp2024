@@ -42,8 +42,8 @@
 |*csBlazorGlobal|.NET 8 Blazor 004 - 觀察 Global 與 Per Page/Component 之間的差異||
 |csAzureOpenAIRole|Azure.AI.OpenAI 指定不同的角色 (Role) 來提升模型的行為控制和回應精確度||
 |csZeroOneFewShot|Azure.AI.OpenAI 零範例學習 單範例學習 少範例學習||
-||||
-||||
+|csGptNlpToJson|解析自然語言內容，轉換成為 JSON 格式||
+|csPdfChat|與 PDF 檔案對談||
 ||||
 ||||
 ||||
