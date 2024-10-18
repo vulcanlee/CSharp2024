@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csPdfChat", "csPdfChat\csPdfChat.csproj", "{CAA6F89D-5326-45AE-871B-92B597AE3EF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAA6F89D-5326-45AE-871B-92B597AE3EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAA6F89D-5326-45AE-871B-92B597AE3EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAA6F89D-5326-45AE-871B-92B597AE3EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAA6F89D-5326-45AE-871B-92B597AE3EF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC8338D4-8941-453B-846E-EA41D46E636B}
+	EndGlobalSection
+EndGlobal
