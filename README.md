@@ -45,7 +45,7 @@
 |csGptNlpToJson|解析自然語言內容，轉換成為 JSON 格式||
 |csPdfChat|與 PDF 檔案對談||
 |csChatTools|聊天完成請求的過程中呼叫定義的功能和其他功能來擴展聊天完成||
-||||
+|csChatStream|透過串流媒體使用聊天完成功能||
 ||||
 ||||
 ||||
