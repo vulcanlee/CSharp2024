@@ -15,17 +15,29 @@ public partial class MyPopupPageViewModel : ObservableObject, INavigatedAware
     public Action ClosePopupHandler { get; set; }
     [ObservableProperty]
     string message = "0";
+    [ObservableProperty]
+    double dialogWidth = 300.0;
+    [ObservableProperty]
+    double dialogHeight = 200.0;
     #endregion
 
     #region Constructor
     public MyPopupPageViewModel(INavigationService navigationService)
     {
         this.navigationService = navigationService;
+        DialogWidth = DeviceDisplay.Current.MainDisplayInfo.Width /
+     DeviceDisplay.Current.MainDisplayInfo.Density;
+        DialogHeight = DeviceDisplay.Current.MainDisplayInfo.Height /
+        DeviceDisplay.Current.MainDisplayInfo.Density;
     }
     #endregion
 
     #region Method Member
     #region Command Method
+    [RelayCommand]
+    void Empty()
+    {
+    }
     [RelayCommand]
     void Close()
     {

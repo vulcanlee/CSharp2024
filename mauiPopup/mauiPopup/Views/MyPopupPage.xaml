@@ -10,17 +10,26 @@
                Color="#88000000"
                >
 
-        <Grid HorizontalOptions="Center" VerticalOptions="Center"
-              WidthRequest="300" HeightRequest="500"
+    <Grid HorizontalOptions="Center" VerticalOptions="Center"
+              WidthRequest="{Binding DialogWidth}" HeightRequest="{Binding DialogHeight}"
             >
-            <Rectangle HorizontalOptions="Fill" VerticalOptions="Fill"
-                   Fill="LightGray" />
-            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="{Binding Message}" FontSize="24" TextColor="Red"
+        <Rectangle HorizontalOptions="Fill" VerticalOptions="Fill"
+                   Fill="Red" Opacity="0.3"
+                   WidthRequest="{Binding DialogWidth}"
+                   HeightRequest="{Binding DialogHeight}">
+            <!--<Rectangle.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding EmptyCommand}"/>
+            </Rectangle.GestureRecognizers>-->
+        </Rectangle>
+        <Rectangle HorizontalOptions="Fill" VerticalOptions="Fill"
+                   Fill="LightGray" WidthRequest="300" HeightRequest="500" >
+        </Rectangle>
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="{Binding Message}" FontSize="24" TextColor="Red"
                    HorizontalOptions="Center" VerticalOptions="Center"/>
-                <Button Text="Close" Command="{Binding CloseCommand}"
+            <Button Text="Close" Command="{Binding CloseCommand}"
                         HorizontalOptions="Center" VerticalOptions="Center"/>
-            </VerticalStackLayout>
-        </Grid>
+        </VerticalStackLayout>
+    </Grid>
 
 </toolkit:Popup>
