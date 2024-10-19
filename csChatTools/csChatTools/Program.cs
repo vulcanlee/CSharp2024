@@ -45,8 +45,10 @@ internal class Program
         #region 自然語言呼叫C#方法
         ChatCompletion completion;
         //string userPrompt1 = "今天有個病人 Vulcan X000456 來詢問，他在2024-1-3來看病，我想知道他當時發生了甚麼問題";
-        string userPrompt1 = "在 2023/08/8 的代號為 X000123 就醫相關診斷紀錄";
+        //string userPrompt1 = "在 2023/08/8 的代號為 X000123 就醫相關診斷紀錄";
         //string userPrompt1 = "我要查看病歷號為 X000000 在 2020/12/23 的就醫相關診斷紀錄";
+        string userPrompt1 = "我要查看病歷號為 X000000 的就醫相關診斷紀錄";
+        //string userPrompt1 = "一早起來天氣很好，我要去爬山";
         List<ChatMessage> prompts = new()
         {
             UserChatMessage.CreateUserMessage(userPrompt1),
@@ -127,7 +129,7 @@ internal class Program
             }
             else
             {
-                throw new InvalidOperationException("今回のサンプルでは考慮してない結果。");
+                throw new InvalidOperationException("本範例中未考慮此結果。");
             }
         }
         #endregion
@@ -159,6 +161,13 @@ internal class Program
 
     static string GetPatientRecord(string chartNo, string RecordDate)
     {
+        /// 這個方法將會由 GPT 來觸發，
+        /// 只要輸入的 Prompt 內容有符合該方法的宣告條件
+        /// 這裡是模擬從資料庫取得病患的就醫紀錄
+        /// 或者可以呼叫遠端 Web API 來取得相關資料
+        /// 也可以產生一個檔案
+        /// 可以回傳文字、HTML、JSON、URL、Markdown 等等
+        /// 告訴大語言模型接下來的對話內容該如何生成
         if (chartNo == "X000123")
             return $"病人:{chartNo} 於 {RecordDate} 來看肚子痛";
         else if (chartNo == "X000456")
