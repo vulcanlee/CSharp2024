@@ -14,7 +14,7 @@
               WidthRequest="{Binding DialogWidth}" HeightRequest="{Binding DialogHeight}"
             >
         <Rectangle HorizontalOptions="Fill" VerticalOptions="Fill"
-                   Fill="Red" Opacity="0.3"
+                   Fill="White" Opacity="0.1"
                    WidthRequest="{Binding DialogWidth}"
                    HeightRequest="{Binding DialogHeight}">
             <!--<Rectangle.GestureRecognizers>
