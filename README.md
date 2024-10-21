@@ -47,7 +47,7 @@
 |csChatTools|聊天完成請求的過程中呼叫定義的功能和其他功能來擴展聊天完成||
 |csChatStream|透過串流媒體使用聊天完成功能||
 |csChatImage|與圖片檔案進行聊天||
-||||
+|csBlazorAuto|.NET 8 Blazor 005 - 自動轉譯會決定如何在執行階段轉譯元件||
 ||||
 ||||
 ||||
