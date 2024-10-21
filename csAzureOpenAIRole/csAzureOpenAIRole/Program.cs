@@ -35,7 +35,8 @@ internal class Program
         Console.WriteLine($"{DateTime.Now}  [Assistant]");
         foreach (var message in completion.Content)
         {
-            Console.WriteLine($"{DateTime.Now} {message.Text}");
+            if (message.Text != null && message.Text.Trim() != "")
+                Console.WriteLine($"{DateTime.Now} {message.Text}");
         }
 
         Console.WriteLine($"");
