@@ -35,7 +35,7 @@
 |csAlwaysNewThread|使用新執行緒，而不是透過執行緒集區執行緒完成非同步工作||
 |csSemaphoreSlimExcessiveRelease|明確控制最大並發數||
 |csReadExcelSyncfusion|使用 Syncfusion 套件讀取 Excel 檔案內容||
-|*csAzureAIOpenAIQuickStart|第一次使用 Azure.AI.OpenAI 2.0.0 開發教學||
+|*csAzureAIOpenAIQuickStart|AOAI 2.0 : 第一次使用 Azure.AI.OpenAI 2.0.0 開發教學||
 |csAzureAIOpenAIHelper|設計 Azure.AI.OpenAI 支援類別，簡化設計過程||
 |*csBlazorInteractiveSSR|.NET 8 Blazor 002 - 了解 互動式伺服器端轉譯 Interactive server-side rendering (interactive SSR) 運作模式||
 |*csBlazorCSR|.NET 8 Blazor 003 - 了解 互動式 WebAssembly 用戶端端轉譯 Client-side rendering (CSR) 運作模式||
@@ -47,8 +47,8 @@
 |csChatTools|聊天完成請求的過程中呼叫定義的功能和其他功能來擴展聊天完成||
 |csChatStream|透過串流媒體使用聊天完成功能||
 |csChatImage|與圖片檔案進行聊天||
-|csBlazorAuto|.NET 8 Blazor 005 - 自動轉譯會決定如何在執行階段轉譯元件||
-||||
+|*csBlazorAuto|.NET 8 Blazor 005 - 自動轉譯會決定如何在執行階段轉譯元件||
+|csEmbeddings|Azure.AI.OpenAI 如何產生文字嵌入||
 ||||
 ||||
 ||||
