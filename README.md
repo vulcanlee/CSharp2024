@@ -35,21 +35,21 @@
 |csAlwaysNewThread|使用新執行緒，而不是透過執行緒集區執行緒完成非同步工作||
 |csSemaphoreSlimExcessiveRelease|明確控制最大並發數||
 |csReadExcelSyncfusion|使用 Syncfusion 套件讀取 Excel 檔案內容||
-|*csAzureAIOpenAIQuickStart|AOAI 2.0 : 第一次使用 Azure.AI.OpenAI 2.0.0 開發教學||
-|csAzureAIOpenAIHelper|設計 Azure.AI.OpenAI 支援類別，簡化設計過程||
 |*csBlazorInteractiveSSR|.NET 8 Blazor 002 - 了解 互動式伺服器端轉譯 Interactive server-side rendering (interactive SSR) 運作模式||
 |*csBlazorCSR|.NET 8 Blazor 003 - 了解 互動式 WebAssembly 用戶端端轉譯 Client-side rendering (CSR) 運作模式||
 |*csBlazorGlobal|.NET 8 Blazor 004 - 觀察 Global 與 Per Page/Component 之間的差異||
-|csAzureOpenAIRole|Azure.AI.OpenAI 指定不同的角色 (Role) 來提升模型的行為控制和回應精確度||
-|csZeroOneFewShot|Azure.AI.OpenAI 零範例學習 單範例學習 少範例學習||
-|csGptNlpToJson|解析自然語言內容，轉換成為 JSON 格式||
-|csPdfChat|與 PDF 檔案對談||
-|csChatTools|聊天完成請求的過程中呼叫定義的功能和其他功能來擴展聊天完成||
-|csChatStream|透過串流媒體使用聊天完成功能||
-|csChatImage|與圖片檔案進行聊天||
 |*csBlazorAuto|.NET 8 Blazor 005 - 自動轉譯會決定如何在執行階段轉譯元件||
-|csEmbeddings|Azure.AI.OpenAI 如何產生文字嵌入||
-||||
+|*csAzureAIOpenAIQuickStart|Azure OpenAI AOAI 2.0 : 1 第一次使用 Azure.AI.OpenAI 2.0.0 開發教學||
+|*csAzureAIOpenAIHelper|Azure OpenAI AOAI 2.0 : 2 設計 支援類別，簡化設計過程||
+|csAzureOpenAIRole|Azure OpenAI AOAI 2.0 : 3 指定不同的角色 (Role) 來提升模型的行為控制和回應精確度||
+|csZeroOneFewShot|Azure OpenAI AOAI 2.0 : 4 零範例學習 單範例學習 少範例學習||
+|csGptNlpToJson|Azure OpenAI AOAI 2.0 : 5 解析自然語言內容，轉換成為 JSON 格式||
+|csPdfChat|Azure OpenAI AOAI 2.0 : 6 與 PDF 檔案對談||
+|csChatTools|Azure OpenAI AOAI 2.0 : 7 聊天完成請求的過程中呼叫定義的功能和其他功能來擴展聊天完成||
+|csChatStream|Azure OpenAI AOAI 2.0 : 8 透過串流媒體使用聊天完成功能||
+|csChatImage|Azure OpenAI AOAI 2.0 : 9 與圖片檔案進行聊天||
+|csEmbeddings|Azure OpenAI AOAI 2.0 : 10 如何產生文字嵌入||
+|csGenerateImage|Azure OpenAI AOAI 2.0 : 透過 Prompt 產生圖片||
 ||||
 ||||
 ||||
