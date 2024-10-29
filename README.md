@@ -41,7 +41,7 @@
 |*csBlazorAuto|.NET 8 Blazor 005 - 自動轉譯會決定如何在執行階段轉譯元件||
 |*csAzureAIOpenAIQuickStart|Azure OpenAI AOAI 2.0 : 1 第一次使用 Azure.AI.OpenAI 2.0.0 開發教學||
 |*csAzureAIOpenAIHelper|Azure OpenAI AOAI 2.0 : 2 設計 支援類別，簡化設計過程||
-|csAzureOpenAIRole|Azure OpenAI AOAI 2.0 : 3 指定不同的角色 (Role) 來提升模型的行為控制和回應精確度||
+|*csAzureOpenAIRole|Azure OpenAI AOAI 2.0 : 3 指定不同的角色 (Role) 來提升模型的行為控制和回應精確度||
 |csZeroOneFewShot|Azure OpenAI AOAI 2.0 : 4 零範例學習 單範例學習 少範例學習||
 |csGptNlpToJson|Azure OpenAI AOAI 2.0 : 5 解析自然語言內容，轉換成為 JSON 格式||
 |csPdfChat|Azure OpenAI AOAI 2.0 : 6 與 PDF 檔案對談||
@@ -49,8 +49,8 @@
 |csChatStream|Azure OpenAI AOAI 2.0 : 8 透過串流媒體使用聊天完成功能||
 |csChatImage|Azure OpenAI AOAI 2.0 : 9 與圖片檔案進行聊天||
 |csEmbeddings|Azure OpenAI AOAI 2.0 : 10 如何產生文字嵌入||
-|csGenerateImage|Azure OpenAI AOAI 2.0 : 11 透過 Prompt 產生圖片||
-|csComputeToken|Azure OpenAI AOAI 2.0 : 12 如何計算文字的 Token 數量||
+|csGenerateImage|Azure OpenAI AOAI 2.0 : 透過 Prompt 產生圖片||
+||||
 ||||
 ||||
 ||||
