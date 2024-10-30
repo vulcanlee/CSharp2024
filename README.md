@@ -51,8 +51,8 @@
 |csEmbeddings|Azure OpenAI AOAI 2.0 : 10 如何產生文字嵌入||
 |csGenerateImage|Azure OpenAI AOAI 2.0 : 11 透過 Prompt 產生圖片||
 |csInference|Azure OpenAI AOAI 2.0 : 12 使用 Phi-3.5-vision 與 Meta-Llama-3-1-70B 進行聊天設計教學||
-||||
-||||
+|csAzureAIOpenAIHistory|Azure OpenAI AOAI 2.0 : 13 具有記憶的聊天||
+|csPromptOption|Azure OpenAI AOAI 2.0 : 14 Prompt 的各種參數使用與變化差異||
 ||||
 ||||
 ||||
