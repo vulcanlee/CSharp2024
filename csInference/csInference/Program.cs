@@ -8,10 +8,12 @@ namespace csInference
     {
         static void Main(string[] args)
         {
-            Chart("",
-                "");
-            Chart("",
-                "");
+            string apiKeyAzureLlama3170B = System.Environment.GetEnvironmentVariable("AzureLlama3170B");
+            string apiKeyAzurePhi35Vision = System.Environment.GetEnvironmentVariable("AzurePhi35Vision");
+            Chart("https://Meta-Llama-3-1-70B-Instruct-wcwg.eastus2.models.ai.azure.com",
+                 apiKeyAzureLlama3170B);
+            Chart("https://Phi-3-5-vision-instruct-havbt.eastus2.models.ai.azure.com",
+                apiKeyAzurePhi35Vision);
         }
 
         private static void Chart(string endpoint, string key)
