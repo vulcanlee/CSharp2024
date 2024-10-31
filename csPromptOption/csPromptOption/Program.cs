@@ -14,9 +14,58 @@ internal class Program
             new System.ClientModel.ApiKeyCredential(apiKey));
         ChatClient chatClient = azureClient.GetChatClient("gpt-4");
 
-        string userPrompt = "Say 'this is a test.'";
-        Console.WriteLine($"{DateTime.Now}  [User]: {userPrompt}");
-        ChatCompletion completion = chatClient.CompleteChat("Say 'this is a test.'");
+        string userPrompt = "你如何形容海灘？";
+        ChatCompletionOptions options = new();
+        options.Temperature = 0.8f;
+
+        Chart(chatClient, userPrompt, options);
+        NewLine();
+
+        userPrompt = "你如何形容海灘？";
+        options = new();
+        options.Temperature = 0.3f;
+
+        Chart(chatClient, userPrompt, options);
+        NewLine();
+
+        userPrompt = "形容一棵樹";
+        options = new();
+        options.TopP = 1f;
+
+        Chart(chatClient, userPrompt, options);
+        NewLine();
+
+        userPrompt = "形容一棵樹";
+        options = new();
+        options.TopP = 0.1f;
+
+        Chart(chatClient, userPrompt, options);
+        NewLine();
+
+    }
+
+    private static void NewLine()
+    {
+        Console.WriteLine(new string('-', 40));
+        Console.WriteLine(new string('=', 40));
+    }
+
+    private static void Chart(ChatClient chatClient, string userPrompt, ChatCompletionOptions options)
+    {
+        List<ChatMessage> prompts = new()
+        {
+            UserChatMessage.CreateUserMessage(userPrompt)
+        };
+
+        foreach (var message in prompts)
+        {
+            string roleName = message is SystemChatMessage ? "System" :
+                message is UserChatMessage ? "User" :
+                "Assistant";
+            Console.WriteLine($"{DateTime.Now}  [{roleName}]: {message.Content[0].Text}");
+        }
+
+        ChatCompletion completion = chatClient.CompleteChat(prompts, options);
         Console.WriteLine($"Role : {completion.Role}");
 
         foreach (var message in completion.Content)
