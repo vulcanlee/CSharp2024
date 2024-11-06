@@ -10,8 +10,10 @@ namespace csInference
         {
             string apiKeyAzureLlama3170B = System.Environment.GetEnvironmentVariable("AzureLlama3170B");
             string apiKeyAzurePhi35Vision = System.Environment.GetEnvironmentVariable("AzurePhi35Vision");
+            Console.WriteLine($"與 Meta 的 Llama LLM 聊天");
             Chart("https://Meta-Llama-3-1-70B-Instruct-wcwg.eastus2.models.ai.azure.com",
                  apiKeyAzureLlama3170B);
+            Console.WriteLine($"與 Microsoft 的 Phi LLM 聊天");
             Chart("https://Phi-3-5-vision-instruct-havbt.eastus2.models.ai.azure.com",
                 apiKeyAzurePhi35Vision);
         }
@@ -35,7 +37,7 @@ namespace csInference
             };
 
             var response = client.Complete(requestOptions);
-            Console.WriteLine($"Response: {response.Value.Content}");
+            Console.WriteLine($"Response:\n {response.Value.Content}");
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine(new string('-',40));
