@@ -14,11 +14,11 @@ internal class Program
         AzureOpenAIClient azureClient = new(
             new Uri("https://gpt4tw.openai.azure.com/"),
             new System.ClientModel.ApiKeyCredential(apiKey));
-        ChatClient chatClient = azureClient.GetChatClient("gpt-4");
+        ChatClient chatClient = azureClient.GetChatClient("gpt-4o");
 
-        string userPrompt = "Say 'this is a test.'";
+        string userPrompt = "2024/11/06 天氣如何";
         Console.WriteLine($"{DateTime.Now}  [User]: {userPrompt}");
-        ChatCompletion completion = chatClient.CompleteChat("Say 'this is a test.'");
+        ChatCompletion completion = chatClient.CompleteChat(userPrompt);
 
         foreach (var message in completion.Content)
         {
