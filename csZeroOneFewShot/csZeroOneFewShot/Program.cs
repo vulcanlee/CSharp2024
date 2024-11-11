@@ -15,7 +15,7 @@ internal class Program
         ChatClient chatClient = azureClient.GetChatClient("gpt-4");
 
         ZeroShot(chatClient, "請判斷以下產品評論的情感是正面還是負面：'這款產品的質量非常糟糕，我絕對不會再買。'");
-        OneShot(chatClient, "請判斷以下產品評論的情感是正面還是負面：'這款產品的質量非常糟糕，我絕對不會再買。'");
+        OneShot(chatClient, "這款產品的質量非常糟糕，我絕對不會再買。");
         FewShot(chatClient, "這款產品的質量非常糟糕，我絕對不會再買。");
         FewShot(chatClient, "中午吃蛋包飯");
     }

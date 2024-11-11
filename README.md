@@ -42,7 +42,7 @@
 |*csAzureAIOpenAIQuickStart|Azure OpenAI AOAI 2.0 : 1 第一次使用 Azure.AI.OpenAI 2.0.0 開發教學||
 |*csAzureAIOpenAIHelper|Azure OpenAI AOAI 2.0 : 2 設計 支援類別，簡化設計過程||
 |*csAzureOpenAIRole|Azure OpenAI AOAI 2.0 : 3 指定不同的角色 (Role) 來提升模型的行為控制和回應精確度||
-|csZeroOneFewShot|Azure OpenAI AOAI 2.0 : 4 零範例學習 單範例學習 少範例學習||
+|*csZeroOneFewShot|Azure OpenAI AOAI 2.0 : 4 零範例學習 單範例學習 少範例學習||
 |csGptNlpToJson|Azure OpenAI AOAI 2.0 : 5 解析自然語言內容，轉換成為 JSON 格式||
 |csPdfChat|Azure OpenAI AOAI 2.0 : 6 與 PDF 檔案對談||
 |csChatTools|Azure OpenAI AOAI 2.0 : 7 聊天完成請求的過程中呼叫定義的功能和其他功能來擴展聊天完成||
