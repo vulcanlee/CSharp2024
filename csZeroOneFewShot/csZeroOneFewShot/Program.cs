@@ -61,7 +61,7 @@ internal class Program
         Console.WriteLine($"");
         #endregion
     }
- 
+
     private static void OneShot(ChatClient chatClient, string promptText)
     {
         #region one-shot
@@ -120,10 +120,11 @@ internal class Program
         assistantPrompt = "情感：正面";
         string userPrompt2 = "包裝很爛，產品也有問題。";
         string assistantPrompt2 = "情感：正面";
-        string userPrompt3 = "只需要回答:［正面］、［負面］、［不知道］，" +
-            "這三個文字的其中一個，不需要其他多餘內容或者做說明，" +
-            $"問題:'''{promptText}'''" +
-            "";
+        //string userPrompt3 = "只需要回答:［正面］、［負面］、［不知道］，" +
+        //    "這三個文字的其中一個，不需要其他多餘內容或者做說明，" +
+        //    $"問題:'''{promptText}'''" +
+        //    "";
+        string userPrompt3 = $"{promptText}";
 
         Console.WriteLine("Few-Shot");
         Console.WriteLine(new string('-', 40));
