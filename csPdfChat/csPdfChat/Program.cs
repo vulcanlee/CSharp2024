@@ -19,7 +19,7 @@ internal class Program
         ChatClient chatClient = azureClient.GetChatClient("gpt-4");
 
         string pdfContent = GetPdf("jmir-2024-1-e52399.pdf");
-        PromptToJson(chatClient, pdfContent);
+        ChatPdf(chatClient, pdfContent);
     }
 
     static string GetPdf(string filename)
@@ -45,9 +45,9 @@ internal class Program
         return content;
     }
 
-    private static void PromptToJson(ChatClient chatClient, string pdfContent)
+    private static void ChatPdf(ChatClient chatClient, string pdfContent)
     {
-        #region 將自然語言轉乘 JSON
+        #region 與 PDF 文字內容進行聊天
         List<ChatMessage> prompts;
         ChatCompletion completion;
         string userPrompt1 = $"'''{pdfContent}'''";
