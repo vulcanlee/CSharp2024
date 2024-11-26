@@ -15,10 +15,10 @@ internal class Program
             new System.ClientModel.ApiKeyCredential(apiKey));
         ChatClient chatClient = azureClient.GetChatClient("gpt-4");
 
-        await ZeroShot(chatClient, "請以正大光明為主題，做出一首詩與一篇散文");
+        await ChatStream(chatClient, "請以正大光明為主題，做出一首詩與一篇散文");
     }
 
-    private static async Task ZeroShot(ChatClient chatClient, string promptText)
+    private static async Task ChatStream(ChatClient chatClient, string promptText)
     {
         #region 串流媒體聊天
         List<ChatMessage> prompts;

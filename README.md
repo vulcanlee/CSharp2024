@@ -46,7 +46,7 @@
 |*csGptNlpToJson|Azure OpenAI AOAI 2.0 : 5 解析自然語言內容，轉換成為 JSON 格式||
 |*csPdfChat|Azure OpenAI AOAI 2.0 : 6 與 PDF 檔案對談||
 |csChatTools|Azure OpenAI AOAI 2.0 : 7 聊天完成請求的過程中呼叫定義的功能和其他功能來擴展聊天完成||
-|csChatStream|Azure OpenAI AOAI 2.0 : 8 透過串流媒體使用聊天完成功能||
+|*csChatStream|Azure OpenAI AOAI 2.0 : 8 透過串流媒體使用聊天完成功能||
 |csChatImage|Azure OpenAI AOAI 2.0 : 9 與圖片檔案進行聊天||
 |csEmbeddings|Azure OpenAI AOAI 2.0 : 10 如何產生文字嵌入||
 |csGenerateImage|Azure OpenAI AOAI 2.0 : 11 透過 Prompt 產生圖片||
