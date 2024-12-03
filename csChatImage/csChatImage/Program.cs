@@ -16,11 +16,11 @@ internal class Program
             new System.ClientModel.ApiKeyCredential(apiKey));
         ChatClient chatClient = azureClient.GetChatClient("gpt-4o");
 
-        PromptToJson(chatClient);
+        ChatImage(chatClient);
     }
-    private static void PromptToJson(ChatClient chatClient)
+    private static void ChatImage(ChatClient chatClient)
     {
-        #region 將自然語言轉乘 JSON
+        #region 提供圖片並與其聊天
         List<ChatMessage> prompts;
         ChatCompletion completion;
         string userPrompt1 = $"從這張圖片中，請分析該名運動員的狀態與給出適當建議";
