@@ -14,8 +14,8 @@ internal class Program
         AzureOpenAIClient azureClient = new(
             new Uri("https://gpt4tw.openai.azure.com/"),
             new System.ClientModel.ApiKeyCredential(apiKey));
-        //EmbeddingClient embeddingClient = azureClient.GetEmbeddingClient("text-embedding-3-large");
-        EmbeddingClient embeddingClient = azureClient.GetEmbeddingClient("text-embedding-3-small");
+        EmbeddingClient embeddingClient = azureClient.GetEmbeddingClient("text-embedding-3-large");
+        //EmbeddingClient embeddingClient = azureClient.GetEmbeddingClient("text-embedding-3-small");
 
         string userPrompt = "[客戶服務] 如何聯絡蝦皮客服？\n" +
         "您可以在以下位置找到蝦皮客服團隊(請使用App並登入)：蝦皮購物App右下角『我的』➜ 滑至下方，即可看到客服選項。\n\n" +

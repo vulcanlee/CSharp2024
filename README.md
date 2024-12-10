@@ -48,7 +48,7 @@
 |csChatTools|Azure OpenAI AOAI 2.0 : 7 聊天完成請求的過程中呼叫定義的功能和其他功能來擴展聊天完成||
 |*csChatStream|Azure OpenAI AOAI 2.0 : 8 透過串流媒體使用聊天完成功能||
 |*csChatImage|Azure OpenAI AOAI 2.0 : 9 與圖片檔案進行聊天||
-|csEmbeddings|Azure OpenAI AOAI 2.0 : 10 如何產生文字嵌入||
+|*csEmbeddings|Azure OpenAI AOAI 2.0 : 10 如何產生文字嵌入||
 |csGenerateImage|Azure OpenAI AOAI 2.0 : 11 透過 Prompt 產生圖片||
 |csInference|Azure OpenAI AOAI 2.0 : 12 使用 Phi-3.5-vision 與 Meta-Llama-3-1-70B 進行聊天設計教學||
 |csAzureAIOpenAIHistory|Azure OpenAI AOAI 2.0 : 13 具有記憶的聊天||
