@@ -396,3 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/csNlogTraceId/csNlogTraceId/internal-nlog.log
