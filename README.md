@@ -56,7 +56,7 @@
 |csRAG|Azure OpenAI AOAI 2.0 : 15 RAG 的設計教學||
 |*csApiExceptionHandling|在 .NET9 ASP.NET Core 處理全域例外的 Middleware||
 |*csNET9OpenAPI|在 .NET9 Web API 專案使用 OpenAPI||
-||||
+|*csOpenApiCurl|在 .NET9 Web API 專案使用 Curl 測試 API||
 ||||
 ||||
 ||||
