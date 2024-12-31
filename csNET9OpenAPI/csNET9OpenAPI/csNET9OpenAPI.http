@@ -1,0 +1,6 @@
+@csNET9OpenAPI_HostAddress = http://localhost:5041
+
+GET {{csNET9OpenAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

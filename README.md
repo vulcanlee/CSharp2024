@@ -54,8 +54,8 @@
 |csAzureAIOpenAIHistory|Azure OpenAI AOAI 2.0 : 13 具有記憶的聊天||
 |csPromptOption|Azure OpenAI AOAI 2.0 : 14 Prompt 的各種參數使用與變化差異||
 |csRAG|Azure OpenAI AOAI 2.0 : 15 RAG 的設計教學||
-|csApiExceptionHandling|在 ASP.NET Core 處理全域例外的 Middleware||
-||||
+|*csApiExceptionHandling|在 .NET9 ASP.NET Core 處理全域例外的 Middleware||
+|*csNET9OpenAPI|在 .NET9 Web API 專案使用 OpenAPI||
 ||||
 ||||
 ||||
