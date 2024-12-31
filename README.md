@@ -58,7 +58,8 @@
 |*csNET9OpenAPI|在 .NET9 Web API 專案使用 OpenAPI||
 |*csOpenApiCurl|在 .NET9 Web API 專案使用 Curl 測試 API||
 |*csOpenApiScalar|在 .NET9 Web API 專案使用 Scalar 測試 API||
-||||
+|*csNlogTraceId|在 .NET9 Web API 專案使用NLog教學與紀錄Trace Id||
+|*csNlogProfiling|在 .NET9 Web API 專案使用NLog來量測程式碼效能||
 ||||
 ||||
 ||||

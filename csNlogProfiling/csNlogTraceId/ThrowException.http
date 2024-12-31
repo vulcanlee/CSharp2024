@@ -1,0 +1,6 @@
+@csNlogTraceId_HostAddress = https://localhost:7014
+
+GET {{csNlogTraceId_HostAddress}}/ThrowException/
+Accept: application/json
+
+###
