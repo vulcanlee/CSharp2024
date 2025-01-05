@@ -1,0 +1,10 @@
+@csDIRegistrationDifferent_HostAddress = https://localhost:7297
+
+GET {{csDIRegistrationDifferent_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{csDIRegistrationDifferent_HostAddress}}/verifyregistrationdi
+
+###
