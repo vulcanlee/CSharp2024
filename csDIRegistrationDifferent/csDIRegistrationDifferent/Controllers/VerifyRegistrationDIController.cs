@@ -25,11 +25,14 @@ namespace csDIRegistrationDifferent.Controllers
         [HttpGet(Name = "GetVerifyRegistrationDI")]
         public void Get()
         {
-            logger.LogInformation($"=========================");
-            logger.LogInformation($"Transient Value: {transient.Value}");
-            logger.LogInformation($"Scoped Value: {scoped.Value}");
-            logger.LogInformation($"Singleton Value: {singleton.Value}");
-            logger.LogInformation($"=========================");
+            Console.WriteLine($"=== [From VerifyRegistrationDIController ] ======================");
+            Console.WriteLine($"Transient Value: {transient.Value}");
+            Console.WriteLine($"Scoped Value: {scoped.Value}");
+            Console.WriteLine($"Singleton Value: {singleton.Value}");
+            Console.WriteLine($"=================================================================");
+            Console.WriteLine($"");
+            Console.WriteLine($"");
+            Console.WriteLine($"");
             togetherMyService.Show();
         }
     }
