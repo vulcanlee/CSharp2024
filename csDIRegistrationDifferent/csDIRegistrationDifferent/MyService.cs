@@ -1,6 +1,6 @@
 ﻿namespace csDIRegistrationDifferent
 {
-    public class MyService: ITransientMyService, ISingletonMyService, IScopedMyService
+    public class MyService : ITransientMyService, ISingletonMyService, IScopedMyService
     {
         public int Value { get; set; }
         public DateTime CreateAt { get; set; }
@@ -12,10 +12,14 @@
     }
 
 
-    public interface ISingletonMyService
+    public interface IBaseMyService
     {
         public int Value { get; set; }
         public DateTime CreateAt { get; set; }
+    }
+
+    public interface ISingletonMyService : IBaseMyService
+    {
     }
     public interface IScopedMyService : ISingletonMyService
     {
@@ -51,9 +55,9 @@
             var scopedBy服務定位器 = serviceProvider.GetService<IScopedMyService>();
             var singletonBy服務定位器 = serviceProvider.GetService<ISingletonMyService>();
 
-            Console.WriteLine($"---  [From TogetherMyService ] ------------------------------");
+            Console.WriteLine($"===  [From TogetherMyService ] ======================");
             Console.WriteLine($"TogetherMyService GetHashCode: {GetHashCode()}");
-            Console.WriteLine($"-------------------------------------------------------------");
+            Console.WriteLine($"=====================================================");
             Console.WriteLine($"Transient GetHashCode: {transient.GetHashCode()}");
             Console.WriteLine($"Transient Value: {transient.Value}");
             Console.WriteLine($"Transient服務定位器 Value: {transientBy服務定位器!.Value}");
