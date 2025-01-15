@@ -61,7 +61,7 @@
 |*csNlogTraceId|在 .NET9 Web API 專案使用NLog教學與紀錄Trace Id||
 |*csNlogProfiling|在 .NET9 Web API 專案使用NLog來量測程式碼效能||
 |*csDIRegistrationDifferent|在 .NET9 的相依性注入三種方式的使用上差異||
-||||
+|csMenuJson|.NET9 使用 JSON 定義功能表顯示與可用權限||
 ||||
 ||||
 ||||

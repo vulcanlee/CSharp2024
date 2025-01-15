@@ -1,0 +1,118 @@
+{
+  "menus": [
+    {
+      "id": "system",
+      "name": "系統管理",
+      "icon": "settings",
+      "order": 1,
+      "children": [
+        {
+          "id": "user-mgmt",
+          "name": "使用者管理",
+          "path": "/system/users",
+          "icon": "users",
+          "order": 1,
+          "permissions": {
+            "view": true,
+            "create": true,
+            "update": true,
+            "delete": true,
+            "export": true,
+            "print": true,
+            "search": true
+          }
+        },
+        {
+          "id": "role-mgmt",
+          "name": "角色管理",
+          "path": "/system/roles",
+          "icon": "shield",
+          "order": 2,
+          "permissions": {
+            "view": true,
+            "create": true,
+            "update": true,
+            "delete": true,
+            "search": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "sales",
+      "name": "銷售管理",
+      "icon": "shopping-cart",
+      "order": 2,
+      "children": [
+        {
+          "id": "orders",
+          "name": "訂單管理",
+          "path": "/sales/orders",
+          "icon": "file-text",
+          "order": 1,
+          "permissions": {
+            "view": true,
+            "create": true,
+            "update": true,
+            "delete": false,
+            "export": true,
+            "print": true,
+            "search": true
+          }
+        },
+        {
+          "id": "customers",
+          "name": "客戶管理",
+          "path": "/sales/customers",
+          "icon": "users",
+          "order": 2,
+          "permissions": {
+            "view": true,
+            "create": true,
+            "update": true,
+            "delete": true,
+            "export": true,
+            "search": true
+          }
+        }
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "id": "admin",
+      "name": "系統管理員",
+      "description": "擁有所有系統權限",
+      "menuPermissions": [
+        {
+          "menuId": "system",
+          "access": true,
+          "children": [
+            {
+              "menuId": "user-mgmt",
+              "permissions": [ "view", "create", "update", "delete", "export", "print", "search" ]
+            },
+            {
+              "menuId": "role-mgmt",
+              "permissions": [ "view", "create", "update", "delete", "search" ]
+            }
+          ]
+        },
+        {
+          "menuId": "sales",
+          "access": true,
+          "children": [
+            {
+              "menuId": "orders",
+              "permissions": [ "view", "create", "update", "export", "print", "search" ]
+            },
+            {
+              "menuId": "customers",
+              "permissions": [ "view", "create", "update", "delete", "export", "search" ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
