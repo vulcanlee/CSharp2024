@@ -1,4 +1,5 @@
 using csMenuJson.Components;
+using csMenuJson.Services;
 
 namespace csMenuJson
 {
@@ -11,6 +12,8 @@ namespace csMenuJson
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
+
+            builder.Services.AddTransient<MenuDataRoleBuildService>();
 
             var app = builder.Build();
 

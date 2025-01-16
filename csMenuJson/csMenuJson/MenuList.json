@@ -5,22 +5,14 @@
       "name": "系統管理",
       "icon": "settings",
       "order": 1,
-      "children": [
+      "subMenu": [
         {
           "id": "user-mgmt",
           "name": "使用者管理",
           "path": "/system/users",
           "icon": "users",
           "order": 1,
-          "permissions": {
-            "view": true,
-            "create": true,
-            "update": true,
-            "delete": true,
-            "export": true,
-            "print": true,
-            "search": true
-          }
+          "permissions": [ "view", "create", "update", "delete", "export", "print", "search" ]
         },
         {
           "id": "role-mgmt",
@@ -28,13 +20,7 @@
           "path": "/system/roles",
           "icon": "shield",
           "order": 2,
-          "permissions": {
-            "view": true,
-            "create": true,
-            "update": true,
-            "delete": true,
-            "search": true
-          }
+          "permissions": [ "view", "create", "update", "delete", "search" ]
         }
       ]
     },
@@ -43,22 +29,14 @@
       "name": "銷售管理",
       "icon": "shopping-cart",
       "order": 2,
-      "children": [
+      "menuItem": [
         {
           "id": "orders",
           "name": "訂單管理",
           "path": "/sales/orders",
           "icon": "file-text",
           "order": 1,
-          "permissions": {
-            "view": true,
-            "create": true,
-            "update": true,
-            "delete": false,
-            "export": true,
-            "print": true,
-            "search": true
-          }
+          "permissions": [ "view", "create", "update", "export", "print", "search" ]
         },
         {
           "id": "customers",
@@ -66,52 +44,38 @@
           "path": "/sales/customers",
           "icon": "users",
           "order": 2,
-          "permissions": {
-            "view": true,
-            "create": true,
-            "update": true,
-            "delete": true,
-            "export": true,
-            "search": true
-          }
+          "permissions": [ "view", "create", "update", "delete", "export", "search" ]
         }
       ]
     }
   ],
-  "roles": [
+  "dataRoles": [
     {
-      "id": "admin",
-      "name": "系統管理員",
-      "description": "擁有所有系統權限",
-      "menuPermissions": [
-        {
-          "menuId": "system",
-          "access": true,
-          "children": [
-            {
-              "menuId": "user-mgmt",
-              "permissions": [ "view", "create", "update", "delete", "export", "print", "search" ]
-            },
-            {
-              "menuId": "role-mgmt",
-              "permissions": [ "view", "create", "update", "delete", "search" ]
-            }
-          ]
-        },
-        {
-          "menuId": "sales",
-          "access": true,
-          "children": [
-            {
-              "menuId": "orders",
-              "permissions": [ "view", "create", "update", "export", "print", "search" ]
-            },
-            {
-              "menuId": "customers",
-              "permissions": [ "view", "create", "update", "delete", "export", "search" ]
-            }
-          ]
-        }
+      "id": "medicalData",
+      "name": "醫療項目",
+      "enable": true,
+      "dataPermissions": [
+        "血液檢驗 - 血紅素",
+        "血液檢驗 - 白血球計數",
+        "影像檢查 - CT 胸部影像",
+        "影像檢查 - MRI 腦部影像",
+        "病理檢查 - 肝臟切片報告",
+        "生理檢查 - 心電圖數據",
+        "生理檢查 - 肺功能檢測"
+      ]
+    },
+    {
+      "id": "cancerClassification",
+      "name": "癌別",
+      "enable": true,
+      "dataPermissions": [
+        "肺癌",
+        "乳癌",
+        "大腸癌",
+        "肝癌",
+        "胃癌",
+        "前列腺癌",
+        "卵巢癌"
       ]
     }
   ]
