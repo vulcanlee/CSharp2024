@@ -1,17 +1,10 @@
 ﻿@page "/"
-@using csMenuJson.Helpers
-@using csMenuJson.Services
-@inject MenuDataRoleBuildService MenuDataRoleBuildService
 
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
+<CustomSidebarView />
 
 @code {
-    protected override async Task OnInitializedAsync()
-    {
-        MenuDataRoleBuildService.ReadMenuListFromFile(MagicHelper.MenuTemplateFilename);
-    }
 }

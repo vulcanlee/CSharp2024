@@ -1,5 +1,6 @@
 using csMenuJson.Components;
 using csMenuJson.Services;
+using Syncfusion.Blazor;
 
 namespace csMenuJson
 {
@@ -14,8 +15,15 @@ namespace csMenuJson
                 .AddInteractiveServerComponents();
 
             builder.Services.AddTransient<MenuDataRoleBuildService>();
+            builder.Services.AddSyncfusionBlazor();
 
             var app = builder.Build();
+
+            var syncfusionLicense = app.Configuration.GetValue<string>("SyncfusionLicense");
+            if (!string.IsNullOrEmpty(syncfusionLicense))
+            {
+                Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(syncfusionLicense);
+            }
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

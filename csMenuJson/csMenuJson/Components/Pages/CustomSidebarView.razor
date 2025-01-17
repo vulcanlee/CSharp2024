@@ -1,0 +1,25 @@
+﻿@using csMenuJson.Helpers
+@using csMenuJson.Services
+@inject MenuDataRoleBuildService MenuDataRoleBuildService
+
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Navigations
+
+<div class="container w-100">
+    <div class="row">
+        <div class="col-6">
+            <SfSidebar Width="250px">
+                <ChildContent>
+                    <div style="text-align: center;" class="text-content"> Sidebar </div>
+                </ChildContent>
+            </SfSidebar>
+        </div>
+    </div>
+</div>
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        MenuDataRoleBuildService.ReadMenuListFromFile(MagicHelper.MenuTemplateFilename);
+    }
+
+}
