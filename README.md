@@ -7,7 +7,7 @@
 |csBlazorTodo|使用 Blazor 設計 Todo 元件|https://reactsimpletodo.darenge.net/|
 |* csBlazorSSR|.NET 8 Blazor 001 - 了解 SSR Static Server Render 運作模式||
 |csExceptionToString|將 Inner, Aggregation 等所有例外異常物件，轉成字串||
-|csBlazorLogin|.NET 8 Blazor Server Interactive Cookie 登入||
+|*csBlazorLogin|.NET 8 Blazor Server Interactive 下需要進行 Cookie 身分驗證、登入設計教學||
 |mauiSettingConfiguration|||
 |mauiPrismNavigationEventWatch|觀察 MAIU for Prism 的導航事件觸發時機||
 |mauiMessengerCommunication|重複訂閱事件的問題修正做法||
