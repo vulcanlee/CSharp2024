@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.IdentityModel.Tokens;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,12 +13,12 @@ namespace csJwtError;
 public class ExceptionHandlingMiddleware
 {
     private readonly RequestDelegate _next;
-    private readonly ILogger<ExceptionHandlingMiddleware> _logger;
+    private readonly ILogger<ExceptionHandlingMiddleware> logger;
 
     public ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
     {
         _next = next;
-        _logger = logger;
+        this.logger = logger;
     }
     public async Task InvokeAsync(HttpContext context)
     {
@@ -25,26 +26,51 @@ public class ExceptionHandlingMiddleware
         {
             await _next(context);
 
-        //src\Security\Authentication\JwtBearer\src\JwtBearerHandler.cs
-        //    string? message = ex switch
-        //    {
-        //        SecurityTokenInvalidAudienceException stia => $"The audience '{stia.InvalidAudience ?? "(null)"}' is invalid",
-        //        SecurityTokenInvalidIssuerException stii => $"The issuer '{stii.InvalidIssuer ?? "(null)"}' is invalid",
-        //        SecurityTokenNoExpirationException _ => "The token has no expiration",
-        //        SecurityTokenInvalidLifetimeException stil => "The token lifetime is invalid; NotBefore: "
-        //            + $"'{stil.NotBefore?.ToString(CultureInfo.InvariantCulture) ?? "(null)"}'"
-        //            + $", Expires: '{stil.Expires?.ToString(CultureInfo.InvariantCulture) ?? "(null)"}'",
-        //        SecurityTokenNotYetValidException stnyv => $"The token is not valid before '{stnyv.NotBefore.ToString(CultureInfo.InvariantCulture)}'",
-        //        SecurityTokenExpiredException ste => $"The token expired at '{ste.Expires.ToString(CultureInfo.InvariantCulture)}'",
-        //        SecurityTokenSignatureKeyNotFoundException _ => "The signature key was not found",
-        //        SecurityTokenInvalidSignatureException _ => "The signature is invalid",
-        //        _ => null,
-        //    };
+            if (!(context.Response.StatusCode >= 200 && context.Response.StatusCode < 300))
+            {
+                // Handle no successful response
+                // 獲取 status code
+                var statusCode = context.Response.StatusCode;
+                // 獲取 reason phrase
+                var reasonPhrase = ReasonPhrases.GetReasonPhrase(statusCode);
+
+                var result = new APIResult
+                {
+                    Success = false,
+                    Message = $"{statusCode} {reasonPhrase} ",
+                    Exception = null
+                };
+                var json = JsonSerializer.Serialize(result, new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    WriteIndented = true
+                });
+
+                logger.LogError(json);
+
+                await context.Response.WriteAsync(json);
+            }
+
+            //src\Security\Authentication\JwtBearer\src\JwtBearerHandler.cs
+            //    string? message = ex switch
+            //    {
+            //        SecurityTokenInvalidAudienceException stia => $"The audience '{stia.InvalidAudience ?? "(null)"}' is invalid",
+            //        SecurityTokenInvalidIssuerException stii => $"The issuer '{stii.InvalidIssuer ?? "(null)"}' is invalid",
+            //        SecurityTokenNoExpirationException _ => "The token has no expiration",
+            //        SecurityTokenInvalidLifetimeException stil => "The token lifetime is invalid; NotBefore: "
+            //            + $"'{stil.NotBefore?.ToString(CultureInfo.InvariantCulture) ?? "(null)"}'"
+            //            + $", Expires: '{stil.Expires?.ToString(CultureInfo.InvariantCulture) ?? "(null)"}'",
+            //        SecurityTokenNotYetValidException stnyv => $"The token is not valid before '{stnyv.NotBefore.ToString(CultureInfo.InvariantCulture)}'",
+            //        SecurityTokenExpiredException ste => $"The token expired at '{ste.Expires.ToString(CultureInfo.InvariantCulture)}'",
+            //        SecurityTokenSignatureKeyNotFoundException _ => "The signature key was not found",
+            //        SecurityTokenInvalidSignatureException _ => "The signature is invalid",
+            //        _ => null,
+            //    };
 
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "An unhandled exception occurred.");
+            logger.LogError(ex, "An unhandled exception occurred.");
             await HandleExceptionAsync(context, ex);
         }
     }

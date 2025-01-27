@@ -1,5 +1,5 @@
 @csJwtError_HostAddress = https://localhost:7059
-@jwtToken = eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc2VyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJWdWxjYW5MZWUiLCJleHAiOjE3Mzc5ODgwMDgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAyOSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAyOSJ9.tdXJakAEC8EKB3k7-pv4rrl67gxXJfnd4BRXrwFZqV2Hz9xZybg4LUgV_RiqzkIkSWSbDH_Y7YD4jvmFDflVug
+@jwtToken = eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc2VyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJWdWxjYW5MZWUiLCJleHAiOjE3MzgwMDMwODYsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAyOSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAyOSJ9.L46TD5wQOmGKM1u5P0o3FD2CLnK-8wavDXk4DXVbAH_NFKTUIuQfXasoM8rXSnlL2YgRWGsk5aNw0YGBlGdbqA
 
 GET {{csJwtError_HostAddress}}/weatherforecast/
 
@@ -10,6 +10,21 @@ GET {{csJwtError_HostAddress}}/login
 ###
 
 GET {{csJwtError_HostAddress}}/test
+Authorization: Bearer {{jwtToken}}
+
+###
+
+GET {{csJwtError_HostAddress}}/test/empty
+Authorization: Bearer {{jwtToken}}
+
+###
+
+GET {{csJwtError_HostAddress}}/test/HasArg/1
+Authorization: Bearer {{jwtToken}}
+
+###
+
+GET {{csJwtError_HostAddress}}/test/HasArg/abc
 Authorization: Bearer {{jwtToken}}
 
 ###

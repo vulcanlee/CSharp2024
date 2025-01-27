@@ -23,5 +23,12 @@ namespace csJwtError.Controllers
         public void Get()
         {
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("[action]/{id}")]
+        public void HasArg(int id)
+        {
+        }
     }
 }
