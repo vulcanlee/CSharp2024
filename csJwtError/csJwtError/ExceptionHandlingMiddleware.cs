@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.IdentityModel.Tokens;
 using System.Globalization;
@@ -44,7 +45,7 @@ public class ExceptionHandlingMiddleware
                 var reasonPhrase = ReasonPhrases.GetReasonPhrase(statusCode);
                 string message = $"Status code: {statusCode}, Reason: {reasonPhrase}";
                 bool hasContent = memoryStream.Length > 0;
-
+                APIResult apiResult = null;
                 // 如果需要讀取具體內容
                 if (!hasContent)
                 {
@@ -54,13 +55,13 @@ public class ExceptionHandlingMiddleware
                         message = authMessage.FirstOrDefault();
                     }
 
-                    var result = new APIResult
+                    apiResult = new APIResult
                     {
                         Success = false,
                         Message = $"{message} ",
                         Exception = null
                     };
-                    var json = JsonSerializer.Serialize(result, new JsonSerializerOptions
+                    var json = JsonSerializer.Serialize(apiResult, new JsonSerializerOptions
                     {
                         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                         WriteIndented = true
@@ -77,7 +78,49 @@ public class ExceptionHandlingMiddleware
                 {
                     string body = Encoding.UTF8.GetString(memoryStream.ToArray());
                     logger.LogInformation(body);
-                    APIResult apiResult;
+
+                    #region 模型驗證失敗
+                    try
+                    {
+                        var problemDetails = JsonSerializer.Deserialize<ValidationProblemDetails>(body);
+
+                        if (problemDetails?.Errors?.Any() == true)
+                        {
+                            // 這是模型驗證錯誤
+                            var validationErrors = problemDetails.Errors
+                                .SelectMany(x => x.Value.Select(error => new
+                                {
+                                    Field = x.Key,
+                                    Error = error
+                                }));
+
+                            string modelStateErrors = string.Join(", ", validationErrors.Select(x => $"{x.Field}: {x.Error}"));
+                            apiResult = new APIResult
+                            {
+                                Success = false,
+                                Message = $"{modelStateErrors}",
+                                Exception = null
+                            };
+                            var json = JsonSerializer.Serialize(apiResult, new JsonSerializerOptions
+                            {
+                                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                                //Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)  // 允許所有 Unicode 字符直接輸出
+                            });
+                            byte[] jsonBytes = Encoding.UTF8.GetBytes(json);
+                            memoryStream.SetLength(0);
+                            memoryStream.Seek(0, SeekOrigin.Begin);
+                            memoryStream.Write(jsonBytes, 0, jsonBytes.Length);
+                            memoryStream.Seek(0, SeekOrigin.Begin);
+                            context.Response.Body.Seek(0, SeekOrigin.Begin);
+                            await memoryStream.CopyToAsync(originalBodyStream);
+                            return;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        // 不是模型驗證錯誤
+                    }
+                    #endregion
                     bool isApiResult = false;
                     try
                     {
@@ -89,6 +132,10 @@ public class ExceptionHandlingMiddleware
                         if(string.IsNullOrEmpty(apiResult.Message) && apiResult.Success == false)
                         {
                             isApiResult = false;
+                        }
+                        else
+                        {
+                            isApiResult = true;
                         }
                     }
                     catch (Exception)
