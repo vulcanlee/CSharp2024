@@ -30,5 +30,13 @@ namespace csJwtError.Controllers
         public void HasArg(int id)
         {
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("[action]")]
+        public ActionResult BadHasBody()
+        {
+            return BadRequest("發現到有問題，請求無效");
+        }
     }
 }

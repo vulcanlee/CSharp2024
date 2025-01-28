@@ -25,6 +25,9 @@ Authorization: Bearer {{jwtToken}}
 ###
 
 GET {{csJwtError_HostAddress}}/test/HasArg/abc
-Authorization: Bearer {{jwtToken}}
+
+###
+
+GET {{csJwtError_HostAddress}}/test/BadHasBody
 
 ###

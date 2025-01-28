@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
+using System.Text;
 using System.Text.Json;
 using System.Threading;
 
@@ -24,6 +25,12 @@ public class ExceptionHandlingMiddleware
     {
         try
         {
+            // 保存原始的 response body stream
+            var originalBodyStream = context.Response.Body;
+            // 創建一個新的 MemoryStream 來捕獲響應內容
+            using var memoryStream = new MemoryStream();
+            context.Response.Body = memoryStream;
+
             await _next(context);
 
             if (!(context.Response.StatusCode >= 200 && context.Response.StatusCode < 300))
@@ -33,22 +40,50 @@ public class ExceptionHandlingMiddleware
                 var statusCode = context.Response.StatusCode;
                 // 獲取 reason phrase
                 var reasonPhrase = ReasonPhrases.GetReasonPhrase(statusCode);
+                string message = $"Status code: {statusCode}, Reason: {reasonPhrase}";
+                bool hasContent = memoryStream.Length > 0;
 
-                var result = new APIResult
+                // 如果需要讀取具體內容
+                if (!hasContent)
                 {
-                    Success = false,
-                    Message = $"{statusCode} {reasonPhrase} ",
-                    Exception = null
-                };
-                var json = JsonSerializer.Serialize(result, new JsonSerializerOptions
+                    var authMessage = context.Response.Headers.WWWAuthenticate;
+                    if (authMessage.Count() > 0)
+                    {
+                        message = authMessage.FirstOrDefault();
+                    }
+
+                    var result = new APIResult
+                    {
+                        Success = false,
+                        Message = $"{message} ",
+                        Exception = null
+                    };
+                    var json = JsonSerializer.Serialize(result, new JsonSerializerOptions
+                    {
+                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                        WriteIndented = true
+                    });
+
+                    logger.LogError(json);
+                    byte[] jsonBytes = Encoding.UTF8.GetBytes(json);
+                    memoryStream.Write(jsonBytes, 0, jsonBytes.Length);
+                    memoryStream.Seek(0, SeekOrigin.Begin);
+                    await memoryStream.CopyToAsync(originalBodyStream);
+                }
+                else
                 {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                    WriteIndented = true
-                });
-
-                logger.LogError(json);
-
-                await context.Response.WriteAsync(json);
+                    // Handle successful response
+                    // 將 response body stream 設置為原始的 stream
+                    context.Response.Body.Seek(0, SeekOrigin.Begin);
+                    await memoryStream.CopyToAsync(originalBodyStream);
+                }
+            }
+            else
+            {
+                // Handle successful response
+                // 將 response body stream 設置為原始的 stream
+                context.Response.Body.Seek(0, SeekOrigin.Begin);
+                await memoryStream.CopyToAsync(originalBodyStream);
             }
 
             //src\Security\Authentication\JwtBearer\src\JwtBearerHandler.cs
