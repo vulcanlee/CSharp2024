@@ -6,7 +6,9 @@ using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Text.Unicode;
 using System.Threading;
 
 namespace csJwtError;
@@ -66,16 +68,62 @@ public class ExceptionHandlingMiddleware
 
                     logger.LogError(json);
                     byte[] jsonBytes = Encoding.UTF8.GetBytes(json);
+                    memoryStream.Seek(0, SeekOrigin.Begin);
                     memoryStream.Write(jsonBytes, 0, jsonBytes.Length);
                     memoryStream.Seek(0, SeekOrigin.Begin);
                     await memoryStream.CopyToAsync(originalBodyStream);
                 }
                 else
                 {
-                    // Handle successful response
-                    // 將 response body stream 設置為原始的 stream
-                    context.Response.Body.Seek(0, SeekOrigin.Begin);
-                    await memoryStream.CopyToAsync(originalBodyStream);
+                    string body = Encoding.UTF8.GetString(memoryStream.ToArray());
+                    logger.LogInformation(body);
+                    APIResult apiResult;
+                    bool isApiResult = false;
+                    try
+                    {
+                        apiResult = JsonSerializer.Deserialize<APIResult>(body, new JsonSerializerOptions
+                        {
+                            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                            Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)  // 允許所有 Unicode 字符直接輸出
+                        });
+                        if(string.IsNullOrEmpty(apiResult.Message) && apiResult.Success == false)
+                        {
+                            isApiResult = false;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        apiResult = null;
+                        isApiResult = false;
+                    }
+
+                    if (isApiResult == true)
+                    {
+                        // Handle successful response
+                        // 將 response body stream 設置為原始的 stream
+                        context.Response.Body.Seek(0, SeekOrigin.Begin);
+                        await memoryStream.CopyToAsync(originalBodyStream);
+                    }
+                    else
+                    {
+                        apiResult = new APIResult
+                        {
+                            Success = false,
+                            Message = $"{body}",
+                            Exception = null
+                        };
+                        var json = JsonSerializer.Serialize(apiResult, new JsonSerializerOptions
+                        {
+                            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                            Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)  // 允許所有 Unicode 字符直接輸出
+                        });
+                        logger.LogError(json);
+                        byte[] jsonBytes = Encoding.UTF8.GetBytes(json);
+                        memoryStream.Seek(0, SeekOrigin.Begin);
+                        memoryStream.Write(jsonBytes, 0, jsonBytes.Length);
+                        memoryStream.Seek(0, SeekOrigin.Begin);
+                        await memoryStream.CopyToAsync(originalBodyStream);
+                    }
                 }
             }
             else

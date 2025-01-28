@@ -31,3 +31,7 @@ GET {{csJwtError_HostAddress}}/test/HasArg/abc
 GET {{csJwtError_HostAddress}}/test/BadHasBody
 
 ###
+
+GET {{csJwtError_HostAddress}}/test/BadHasApiResult
+
+###

@@ -36,7 +36,22 @@ namespace csJwtError.Controllers
         [Route("[action]")]
         public ActionResult BadHasBody()
         {
-            return BadRequest("發現到有問題，請求無效");
+            return BadRequest("發現到有問題，請求無效(no APIResult)");
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("[action]")]
+        public ActionResult BadHasApiResult()
+        {
+            var result = new APIResult
+            {
+                Success = false,
+                Message = "發現到有問題，請求無效(with APIResult)",
+                Exception = null
+            };
+
+            return BadRequest(result);
         }
     }
 }
