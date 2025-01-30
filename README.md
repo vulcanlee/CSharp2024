@@ -9,7 +9,7 @@
 |*csExceptionToString|將 Inner, Aggregation 等所有例外異常物件，轉成字串||
 |*csBlazorLogin|.NET 8 Blazor Server Interactive 下需要進行 Cookie 身分驗證、登入設計教學||
 |*mauiPrismNavigationEventWatch|觀察 MAIU for Prism 的導航事件觸發時機||
-|mauiMessengerCommunication|重複訂閱事件的問題修正做法||
+|*mauiMessengerCommunication|重複訂閱事件的問題修正做法||
 |mauiSoftKeyboardVisibility|軟體鍵盤的隱藏控制||
 |mauiSwitchScreenAlwaysOn|螢幕持續恆亮||
 |mauiLockScreenPortrait|在iOS與Android裝置下，鎖定Portrait模式||

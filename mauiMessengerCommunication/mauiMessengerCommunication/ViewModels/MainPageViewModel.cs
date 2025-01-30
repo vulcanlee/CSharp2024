@@ -81,7 +81,7 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
         WeakReferenceMessenger.Default
             .Register<DoNothingRequest>(this, (sender, message) =>
             {
-                Debug.WriteLine($"--------- DoNothingRequest {this.GetHashCode()}");
+                Debug.WriteLine($"--------- 收到 DoNothingRequest {this.GetHashCode()} 訂閱事件");
             });
 
         WeakReferenceMessenger.Default
@@ -103,7 +103,10 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
             var hashCodeSender = sender.GetHashCode();
             var hashCode = this.GetHashCode();
             if (hashCode != message.HashCode)
+            {
+                Debug.WriteLine($"準備要解除 {hashCodeSender} 的 DoNothing 事件訂閱");
                 WeakReferenceMessenger.Default.Unregister<DoNothingRequest>(this);
+            }
         });
     }
     #endregion
