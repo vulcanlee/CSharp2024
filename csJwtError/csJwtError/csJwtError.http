@@ -1,6 +1,10 @@
 @csJwtError_HostAddress = https://localhost:7059
 @jwtToken = eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc2VyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJWdWxjYW5MZWUiLCJleHAiOjE3MzgwMDMwODYsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAyOSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAyOSJ9.L46TD5wQOmGKM1u5P0o3FD2CLnK-8wavDXk4DXVbAH_NFKTUIuQfXasoM8rXSnlL2YgRWGsk5aNw0YGBlGdbqA
 
+GET {{csJwtError_HostAddress}}
+
+###
+
 GET {{csJwtError_HostAddress}}/weatherforecast/
 
 ###
