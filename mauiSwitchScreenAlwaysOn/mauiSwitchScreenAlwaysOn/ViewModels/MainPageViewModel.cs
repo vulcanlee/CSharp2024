@@ -17,6 +17,9 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
 
     [ObservableProperty]
     string text = "Click me";
+
+    [ObservableProperty]
+    bool alwaysScreenOn = false;
     #endregion
 
     #region Constructor
@@ -36,6 +39,16 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
             Text = "Clicked 1 time";
         else if (_count > 1)
             Text = $"Clicked {_count} times";
+    }
+    [RelayCommand]
+    void SwitchScreenAlwaysOn()
+    {
+        AlwaysScreenOn = !AlwaysScreenOn;
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            DeviceDisplay.Current.KeepScreenOn = AlwaysScreenOn;
+        });
+        
     }
     #endregion
 

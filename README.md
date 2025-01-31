@@ -11,7 +11,7 @@
 |*mauiPrismNavigationEventWatch|觀察 MAIU for Prism 的導航事件觸發時機||
 |*mauiMessengerCommunication|.NET MAUI 重複訂閱事件的問題修正做法||
 |*mauiSoftKeyboardVisibility|.NET MAUI 軟體鍵盤的隱藏控制||
-|mauiSwitchScreenAlwaysOn|.NET MAUI 螢幕持續恆亮||
+|*mauiSwitchScreenAlwaysOn|.NET MAUI 螢幕持續恆亮||
 |mauiLockScreenPortrait|.NET MAUI 在iOS與Android裝置下，鎖定Portrait模式||
 |mauiSleepLifecycle|.NET MAUI 偵測 App 是否進入到背景或休眠模式下||
 |mauiAlertSnackbarToast|.NET MAUI 在 MAUI 使用警示功能 - Snackbar 與 快顯通知||
