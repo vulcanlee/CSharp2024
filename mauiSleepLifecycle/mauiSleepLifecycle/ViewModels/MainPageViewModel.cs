@@ -80,7 +80,7 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware, IApp
             {
                 executionLogs.Insert(0, $"Sleep : {DateTime.Now.ToString()}");
                 logger.LogInformation($"Sleep : {DateTime.Now.ToString()}");
-                await Task.Delay(500, cts.Token);
+                await Task.Delay(1000, cts.Token);
             }
         }
         catch (Exception)
