@@ -9,16 +9,16 @@
 |*csExceptionToString|將 Inner, Aggregation 等所有例外異常物件，轉成字串||
 |*csBlazorLogin|.NET 8 Blazor Server Interactive 下需要進行 Cookie 身分驗證、登入設計教學||
 |*mauiPrismNavigationEventWatch|觀察 MAIU for Prism 的導航事件觸發時機||
-|*mauiMessengerCommunication|重複訂閱事件的問題修正做法||
-|mauiSoftKeyboardVisibility|軟體鍵盤的隱藏控制||
-|mauiSwitchScreenAlwaysOn|螢幕持續恆亮||
-|mauiLockScreenPortrait|在iOS與Android裝置下，鎖定Portrait模式||
-|mauiSleepLifecycle|偵測 App 是否進入到背景或休眠模式下||
-|mauiAlertSnackbarToast|在 MAUI 使用警示功能 - Snackbar 與 快顯通知||
+|*mauiMessengerCommunication|.NET MAUI 重複訂閱事件的問題修正做法||
+|*mauiSoftKeyboardVisibility|.NET MAUI 軟體鍵盤的隱藏控制||
+|mauiSwitchScreenAlwaysOn|.NET MAUI 螢幕持續恆亮||
+|mauiLockScreenPortrait|.NET MAUI 在iOS與Android裝置下，鎖定Portrait模式||
+|mauiSleepLifecycle|.NET MAUI 偵測 App 是否進入到背景或休眠模式下||
+|mauiAlertSnackbarToast|.NET MAUI 在 MAUI 使用警示功能 - Snackbar 與 快顯通知||
 |csSymmetricEncryption|使用對稱 Symmetric Encryption 進行資料加解密||
-|mauiExceptionToclipboard|MAUI 捕捉到無法預期例外異常，並將其寫入剪貼簿||
-|mauiStatusBar|設定狀態列的顏色||
-|mauiPopup|全螢幕彈出對話窗||
+|mauiExceptionToclipboard|.NET MAUI MAUI 捕捉到無法預期例外異常，並將其寫入剪貼簿||
+|mauiStatusBar|.NET MAUI 設定狀態列的顏色||
+|mauiPopup|.NET MAUI 全螢幕彈出對話窗||
 |* csSymmetricEncryption|.NET 8 / C# 對稱式 AES 加解密使用教學||
 |csAsymmetricEncryption|非對稱的加解密使用方式||
 |csDigitalSignature|內容數位簽名使用方式||
