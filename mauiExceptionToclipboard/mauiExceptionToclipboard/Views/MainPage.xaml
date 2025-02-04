@@ -14,11 +14,6 @@
 
             <Editor HeightRequest="300"/>
             
-            <!--<Image Source="prism.png"
-             SemanticProperties.Description="Cute dot net bot waving hi to you!"
-             HeightRequest="150"
-             HorizontalOptions="Center" />-->
-
             <Label Text="Hello, World!"
              SemanticProperties.HeadingLevel="Level1"
              FontSize="32"

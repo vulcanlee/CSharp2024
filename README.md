@@ -16,7 +16,7 @@
 |*mauiSleepLifecycle|.NET MAUI 偵測 App 是否進入到背景或休眠模式下||
 |*mauiAlertSnackbarToast|.NET MAUI 在 MAUI 使用警示功能 - Snackbar 與 快顯通知||
 |csSymmetricEncryption|使用對稱 Symmetric Encryption 進行資料加解密||
-|mauiExceptionToclipboard|.NET MAUI MAUI 捕捉到無法預期例外異常，並將其寫入剪貼簿||
+|*mauiExceptionToclipboard|.NET MAUI MAUI 捕捉到無法預期例外異常，並將其寫入剪貼簿||
 |mauiStatusBar|.NET MAUI 設定狀態列的顏色||
 |mauiPopup|.NET MAUI 全螢幕彈出對話窗||
 |* csSymmetricEncryption|.NET 8 / C# 對稱式 AES 加解密使用教學||
