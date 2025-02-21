@@ -51,8 +51,8 @@
 |*csGenerateImage|Azure OpenAI AOAI 2.0 : 11 透過 Prompt 產生圖片||
 |*csInference|Azure OpenAI AOAI 2.0 : 12 使用 Phi-3.5-vision 與 Meta-Llama-3-1-70B 進行聊天設計教學||
 |*csAzureAIOpenAIHistory|Azure OpenAI AOAI 2.0 : 13 具有記憶的聊天||
-|csPromptOption|Azure OpenAI AOAI 2.0 : 14 Prompt 的各種參數使用與變化差異||
-|csRAG|Azure OpenAI AOAI 2.0 : 15 RAG 的設計教學||
+|*csPromptOption|Azure OpenAI AOAI 2.0 : 14 Prompt 的各種參數使用與變化差異||
+|*csRAG|Azure OpenAI AOAI 2.0 : 15 RAG 的設計教學||
 |*csApiExceptionHandling|在 .NET9 ASP.NET Core 處理全域例外的 Middleware||
 |*csNET9OpenAPI|在 .NET9 Web API 專案使用 OpenAPI||
 |*csOpenApiCurl|在 .NET9 Web API 專案使用 Curl 測試 API||

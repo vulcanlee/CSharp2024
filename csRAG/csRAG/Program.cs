@@ -4,8 +4,6 @@ using iText.Kernel.Pdf.Canvas.Parser;
 using iText.Kernel.Pdf.Canvas.Parser.Listener;
 using OpenAI.Chat;
 using OpenAI.Embeddings;
-using System.Collections.Generic;
-using System.Reflection.PortableExecutable;
 using System.Text;
 
 namespace csRAG
@@ -34,8 +32,8 @@ namespace csRAG
             // 建立 Embedding
             List<ChunkItem> embeddings = BuildEmbedding(embeddingClient);
 
-            //string prompt = "病患篩選系統做了哪些事情？請彙整出最重要的五項";
-            string prompt = "人體資料庫資報價單內要做哪些事情，共多少錢?";
+            string prompt = "對於一本好的 ASP.NET Core Web API 開發書籍，最重要的五個章節是甚麼?";
+            //string prompt = "若要設計一個軟體醫材並且要能更進行推廣與獲得更多的成效，該如何做";
             ChunkItem promptEmbedding = PromptToEmbedding(embeddingClient, prompt);
 
             ChunkItem result = FindMostSimilarDocument(embeddings, promptEmbedding);
