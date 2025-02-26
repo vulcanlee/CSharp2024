@@ -20,7 +20,7 @@
 |mauiStatusBar|.NET MAUI 設定狀態列的顏色||
 |mauiPopup|.NET MAUI 全螢幕彈出對話窗||
 |* csSymmetricEncryption|.NET 8 / C# 對稱式 AES 加解密使用教學||
-|csAsymmetricEncryption|非對稱的加解密使用方式||
+|*csAsymmetricEncryption|非對稱的加解密使用方式||
 |csDigitalSignature|內容數位簽名使用方式||
 |mauiNoNetworkConnection|無網路下發生的閃退||
 |mauiExceptionControl|整體App遇到例外異常時候的處理作法||

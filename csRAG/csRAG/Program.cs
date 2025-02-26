@@ -39,7 +39,7 @@ namespace csRAG
             ChunkItem result = FindMostSimilarDocument(embeddings, promptEmbedding);
 
             System.Console.WriteLine($"最相關的文件是 ({result.Similarity}) {result.Filename}");
-            prompt = $"'''{result.Text}'''\n\n{prompt} ";
+            prompt = $"{prompt}\n\n使用底下內容來生成 zh-tw 結果\n\n'''{result.Text}'''";
 
             ChatWithGPT(chatClient, prompt);
         }
@@ -49,7 +49,7 @@ namespace csRAG
         {
             List<ChatMessage> prompts = new()
             {
-                UserChatMessage.CreateUserMessage(prompt)
+                UserChatMessage.CreateUserMessage(prompt),
             };
 
             foreach (var message in prompts)
