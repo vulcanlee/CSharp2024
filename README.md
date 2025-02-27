@@ -15,13 +15,13 @@
 |mauiLockScreenPortrait|.NET MAUI 在iOS與Android裝置下，鎖定Portrait模式||
 |*mauiSleepLifecycle|.NET MAUI 偵測 App 是否進入到背景或休眠模式下||
 |*mauiAlertSnackbarToast|.NET MAUI 在 MAUI 使用警示功能 - Snackbar 與 快顯通知||
-|csSymmetricEncryption|使用對稱 Symmetric Encryption 進行資料加解密||
+|*csSymmetricEncryption|使用對稱 Symmetric Encryption 進行資料加解密||
 |*mauiExceptionToclipboard|.NET MAUI MAUI 捕捉到無法預期例外異常，並將其寫入剪貼簿||
 |mauiStatusBar|.NET MAUI 設定狀態列的顏色||
 |mauiPopup|.NET MAUI 全螢幕彈出對話窗||
-|* csSymmetricEncryption|.NET 8 / C# 對稱式 AES 加解密使用教學||
+|*csSymmetricEncryption|.NET 8 / C# 對稱式 AES 加解密使用教學||
 |*csAsymmetricEncryption|非對稱的加解密使用方式||
-|csDigitalSignature|內容數位簽名使用方式||
+|*csDigitalSignature|內容數位簽名使用方式||
 |mauiNoNetworkConnection|無網路下發生的閃退||
 |mauiExceptionControl|整體App遇到例外異常時候的處理作法||
 |* csConfigurationRunTimeChange|在執行時期能夠取得 appsettings.json 變更後的內容值||
