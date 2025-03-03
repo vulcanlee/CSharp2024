@@ -1,5 +1,7 @@
 CREATE DATABASE DapperDemo;
 
+GO
+
 USE DapperDemo;
 
 CREATE TABLE Users (
@@ -7,3 +9,5 @@ CREATE TABLE Users (
     Name NVARCHAR(50),
     Email NVARCHAR(50)
 );
+
+GO
