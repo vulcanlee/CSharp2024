@@ -28,7 +28,7 @@
 |csUseExceptionHandlerCustom|使用 UseExceptionHandler 來設計一個例外異常處理頁面||
 |csAspNetCoreTemplate|各種 ASP.NET Core 專案範本之間的差異比較||
 |*csDapperLocalDB|使用 Dapper 對 LocalDB 進行資料庫存取||
-|csDapperJson|使用 Dapper 對 JSON 欄位進行資料庫存取||
+|*csDapperJson|使用 Dapper 對 JSON 欄位進行資料庫存取||
 |csLimitThread|限制執行緒使用數量||
 |csJsonMerge|合併兩個 JSON 物件||
 |csAlwaysNewThread|使用新執行緒，而不是透過執行緒集區執行緒完成非同步工作||
