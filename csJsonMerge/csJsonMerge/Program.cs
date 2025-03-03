@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Xml;
 
 namespace csJsonMerge;
@@ -23,6 +25,7 @@ internal class Program
         }
         """;
 
+        #region 使用 Json.NET
         // 將 JSON 轉換為 JObject
         JObject oldJsonObject = JObject.Parse(oldJson);
         JObject newJsonObject = JObject.Parse(newJson);
@@ -39,5 +42,42 @@ internal class Program
 
         // 顯示結果
         Console.WriteLine(mergedJson);
+        #endregion
+
+        #region 使用 System.Text.Json
+        JsonNode node1 = JsonNode.Parse(oldJson);
+        JsonNode node2 = JsonNode.Parse(newJson);
+
+        JsonNode MergeJsonNodes(JsonNode target, JsonNode source)
+        {
+            if (source is JsonObject sourceObject && target is JsonObject targetObject)
+            {
+                foreach (var property in sourceObject)
+                {
+                    if (targetObject.ContainsKey(property.Key) &&
+                        targetObject[property.Key] is JsonObject &&
+                        property.Value is JsonObject)
+                    {
+                        targetObject[property.Key] = MergeJsonNodes(targetObject[property.Key], property.Value);
+                    }
+                    else
+                    {
+                        targetObject[property.Key] = property.Value.DeepClone();
+                    }
+                }
+                return targetObject;
+            }
+            return source.DeepClone();
+        }
+
+        JsonNode mergedNode = MergeJsonNodes(node1.DeepClone(), node2);
+
+        string mergedJson2 = mergedNode.ToJsonString(new JsonSerializerOptions
+        {
+            WriteIndented = true
+        });
+
+        Console.WriteLine(mergedJson2);
+        #endregion
     }
 }
