@@ -31,9 +31,9 @@
 |*csDapperJson|使用 Dapper 對 JSON 欄位進行資料庫存取||
 |csLimitThread|限制執行緒使用數量||
 |*csJsonMerge|合併兩個 JSON 物件||
+|*csReadExcelSyncfusion|使用 Syncfusion 套件讀取 Excel 檔案內容||
 |csAlwaysNewThread|使用新執行緒，而不是透過執行緒集區執行緒完成非同步工作||
 |csSemaphoreSlimExcessiveRelease|明確控制最大並發數||
-|csReadExcelSyncfusion|使用 Syncfusion 套件讀取 Excel 檔案內容||
 |*csBlazorInteractiveSSR|.NET 8 Blazor 002 - 了解 互動式伺服器端轉譯 Interactive server-side rendering (interactive SSR) 運作模式||
 |*csBlazorCSR|.NET 8 Blazor 003 - 了解 互動式 WebAssembly 用戶端端轉譯 Client-side rendering (CSR) 運作模式||
 |*csBlazorGlobal|.NET 8 Blazor 004 - 觀察 Global 與 Per Page/Component 之間的差異||
